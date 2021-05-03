@@ -1,0 +1,46 @@
+\chapter{Rešerše}
+\label{1-reserse}
+
+\section{Volba metody pro tvorbu webové aplikace}
+
+
+Při volbě, jakou metodu pro tvorbu aplikace použít, se nabízely dvě variant. První variantou by bylo použit skriptovací jazyka PHP a druhou použít python framework pro tvorbu webových aplikací. 
+
+Hlavním faktorem při volbě metody zde byla úplná neznalost jazyka PHP, se kterým jsem se během studia ani mimo něj nesetkal. Jasnou volbou tedy bylo použití některého z python frameworků. 
+
+\section{Volba python frameworku}
+Výběr vhodného frameworku po tvorbu aplikace byl vzhledem k jejich množství opravdu složitý. Mezi hlavní kritéria pro výběr frameworku jsme zařadili snadnou práce s databází, implementovat per object permissions a dostupnost výukových materiálů a komunitní podpora. Nakonec se vybíralo se ze dvou frameworků, a to Flask a Django.
+
+\begin{figure}[H] \centering
+    \includegraphics[width=240pt]{./pictures/1-django-vs-flask.jpeg}
+    \caption[Flask vs Django]{Flask vs Django \cite{}}
+	\label{fig:Flask vs Django}                                
+\end{figure}
+
+Flask je open source webový framework napsaný v Pythonu, klasifikovaný jako mikro z důvodu, že není potřeba žádných dodatečných knihoven ani jiných nástrojů. Do Flasku lze ovšem doinstalovat různá rozšíření, která v základní verzi chybí jako například Flask-Admin, což je administrátorské rozhraní pro správu uživatelů a objektů v databázi. Výhodou je jeho velká obliba v komunitě, kdy v roce 2020 měl druhé místo na GitHubu z webových frameworků, a díky tomu disponuje spoustou materiálů a tutoriálů. Avšak velká nevýhoda flasku pro vývoj naší aplikace je, že nedisponuje data modely. Pokud bychom v průběhu vývoje chtěli přidat sloupec do naší databáze, musíme to udělat ručně v databázi a poté ho přidat do třídy ve webové aplikaci.
+
+Django je nejpoužívanějším open source frameworkem disponuje objektově relačním mapováním. Jeho skvělou vlastností je tedy možnost generovat model z databáze, který se zde může upravovat a poté jednoduchými příkazy promítnout úpravy do databáze. Další výhodou je implementované administrátorské rozhraní a možnost doinstalováním přídavných balíčků, poskytující jak grafické úpravy, tak přidané funkce. Jedním z nich je i balíček django-guardian zajišťující podporu per object permissions.
+
+Z těchto dvou frameworků jsem nakonec vybral pro tvorbu aplikace Django. To oproti Flasku disponovalo snadnou a rychlou práci s modelem databáze. Další výhodou je vývojáři implementované administrátorské rozhraní, které se nemusí doinstalovat pomocí přídavného balíčku. Z hlediska popularity a dostupnosti výukových materiálu jsou na tom oba frameworky podobně, kdy se oba řadí na první dvě místa výrazně před ostatní frameworky. 
+
+\textbf{}
+\textit{}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
