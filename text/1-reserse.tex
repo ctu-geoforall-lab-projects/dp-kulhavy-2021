@@ -23,6 +23,16 @@ Django je nejpoužívanějším open source frameworkem disponuje objektově rel
 
 Z těchto dvou frameworků jsem nakonec vybral pro tvorbu aplikace Django. To oproti Flasku disponovalo snadnou a rychlou práci s modelem databáze. Další výhodou je vývojáři implementované administrátorské rozhraní, které se nemusí doinstalovat pomocí přídavného balíčku. Z hlediska popularity a dostupnosti výukových materiálu jsou na tom oba frameworky podobně, kdy se oba řadí na první dvě místa výrazně před ostatní frameworky. 
 
+\vspace{10px}
+
+\section{Volba databáze}
+
+Jedním z hlavních úkolů bylo vytvoření databáze, ze které se budou zobrazovat poskytnutá data z projektu Viskalia, námi rozšířená o další položky. Data zprostředkovaná Národním muzeem byla uložena v MySQL databázi a jednalo se jak o textová, tak obrazová data uložena v tabulkách. Příslušná databáze ovšem postrádá jakoukoli normalizaci a data obsahují spoustu duplicit. Nabízí se proto otázka, zda provést normalizaci dat a opět použít relační databázi, nebo použít nějakou z nerelačních databází. Asi zásadní problém s NoSQL databází, který by mohl nastat je problém v komunikaci s frameworkem pro vývoj webových aplikací. Ty v zásadě nemají problém komunikovat s jakýmkoliv typem relační databáze, ovšem často nemají engine pro databáze typu NoSQL. Zvolili jsme tedy relační databázi a to MariaDB, která je forkem původní MySQL. Od MySQL se liší pouze nepatrně a to přidanými novými funkcemi, odstraněním bugů z MySQL a měla by zajišťovat rychlejší operace s tabulkami.
+
+\section{Automatizace deploymentu}
+
+Jedním z hlavních úkolů je také automatizace deplymentu aplikace a zajištění bezproblémového chodu na všech zařízeních. Při této otázce jsme se nejprve museli rozhodnout, na jakém operačním systému se bude aplikace vyvíjet a následně bude provozována. Po kratší úvaze jsme zvolili systém Linux, který je vhodnější zejména pro vývoj aplikací v jazyce Python. Zde jsme tedy hledali vhodný software pro kontejnerizaci naší vyvíjené aplikace. Hlavními důvody pro jejich použití je, že obsahují kompletní prostředí pro vývoj a chod aplikace jako jsou knihovny nebo konfigurační soubory. Aplikace a všechny její komponenty většinou běží v několika kontejnerech, které spolu dokáží komunikovat. Jejich chod je od zbytku systému oddělen. Zde se nabízejí dvě varianty, a to jsou LXC (LinuX Containers) anebo Docker, což jsou jezdny z nejpoužívanějších aplikací. Hlavní rozdíl mezi těmito aplikacemi je že kontejnery LXC obsahují svůj vlastní operační systém a působí tedy spíše jako virtuální počítač. Docker oproti tomu žádné takové prostředí nemá a běží pouze separovaně na operačním systému uživatele. Dalším hlavním rozdílem je větší propracovanost Dockeru, které umožňuje více nastavení kontejnerů a rozdělení aplikace do více kontejnerů. Dalěím rozdílem oproti LXC je, že může být použit i na jiném operačním systému než je linux. Z těchto důvodů byl pro kontejnerizaci zvolen Docker.
+
 \textbf{}
 \textit{}
 
