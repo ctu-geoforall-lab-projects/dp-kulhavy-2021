@@ -30,14 +30,15 @@ tvorbě aplikace.
 Prvním větším úkolem bylo vytvořit aplikace, která bude zobrazovat
 data, a po přihlášení je bude moci uživatel také přidávat, mazat a
 editovat. Nejprve se tady do adresáře aplikace přidala soubor urls.py,
+%% ML: adresar chybne
 který se následně připojil do projektového adresáře urls.py. Tento
 způsob je výhodný při použití více aplikace, kdy si každá aplikace
-uchovává své url adresy a projekt je tak přehlednější. Pokračovalo se
+uchovává své URL adresy a projekt je tak přehlednější. Pokračovalo se
 vytvořením pohledů založených na třídách, které se v Pythonu používají
 pro nahrazení pohledů jako funkcí. Použity jsou základní pohledy jako
 ListView pro zobrazení obsahu tabulky nebo CreateView pro uložení dat
 do databáze. V aplikaci v soubory \emph{views.py} jsou tedy vytvořeny
-třídy pohledů pro každou url adresu. Definice těchto tříd vypadá
+třídy pohledů pro každou URL adresu. Definice těchto tříd vypadá
 následovně \emph{class “název třídy“(Listview):} dále se u třídy
 definuje model, který se má zobrazit a template\_name neboli název
 šablony, která se použije při zobrazení.
@@ -49,16 +50,18 @@ definuje model, který se má zobrazit a template\_name neboli název
 \end{figure}
 
 
-V souboru \emph{urls.py} jsou propojeny url adresy, pohledy a html
+V souboru \emph{urls.py} jsou propojeny URL adresy, pohledy a HTML
 šablony, na které se odkazují. Do urls.py musí být zároveň importovány
 všechny použité pohledy. Dále se provede import \emph{path}. Poté se
 sestaví \emph{urlpatterns}, což je seznam, který obsahuje jednotlivé
+%% ML: projdete formatovani, nekde mate nazev funkce/promennych
+%% naformatovany, jinde ne...
 adresy. Ty jsou v něm uvedeny ve funkci path, která má dva povinné
 argumenty, route a view a dva nepovinné, name a kwargs. Route uvádí
 adresu, pod jakou se bude stránka načítat a view odkazuje na
 importovaný pohled. Zde byla použita funkce \emph{as\_view()}, která
 se používá, pokud je pohled typu třída. Jméno je uvedeno jako název
-html šablony.
+HTML šablony.
 
 \begin{figure}[H] \centering
     \includegraphics[width=450pt]{./pictures/7-urls-aplikace.PNG}
@@ -66,24 +69,26 @@ html šablony.
 	\label{fig:Náhled urls.py v adresáři aplikaci}              
 \end{figure}
 
-Pro vytvoření html šablon se vytvořila složka \emph{templates}, kde
-jsou uloženy jednotlivé html soubory. Tato složka se v settings.py
+Pro vytvoření HTML šablon se vytvořila složka \emph{templates}, kde
+jsou uloženy jednotlivé HTML soubory. Tato složka se v settings.py
 nastaví jako výchozí pro jejich zobrazení. Poté se už mohou vytvářet
 jednotlivé šablony. Šablony jsou vždy vytvořeny s podmínkou \emph{if
   user.is\_authenticated}, tedy pokud je uživatel přihlášen, zobrazí
 se mu na stránce možnosti data editovat, vytvářet a mazat. S tímto je
 spojena ještě další změna v \emph{settings.py}, kde je přidáno
+%% ML: najednou se objevuje tucne pismo, proc?
 \textbf{LOGIN\_REDIRECT\_URL = 'home'} a \textbf{LOGOUT\_REDIRECT\_URL
   = 'home'} které uživatele po přihlášení a odhlášení přesměruje na
 domovskou stránku. Ve složce \emph{templates} je ještě složka
-\emph{registration}, kde je umístěn \emph{login.html}. Html soubory
+\emph{registration}, kde je umístěn \emph{login.html}. HTML soubory
 zobrazují data v základní formě tabulek a nejsou graficky upravována
-pomocí css.
+%% ML: vysvetlete pojmy nebo pridejte alespon seznam zkratek
+pomocí CSS.
 
 \begin{figure}[H] \centering
     \includegraphics[width=350pt]{./pictures/8-edit-detail-html.PNG}
     \caption[Náhled html souboru edit detail]{Náhled html souboru edit detail}
-	\label{fig:Náhled html souboru edit detail}
+	\label{fig:Náhled HTML souboru edit detail}
 \end{figure}
 
 
@@ -97,6 +102,7 @@ aplikaci. Databáze poté bude obsahovat cestu k těmto souborům. K tomu
 byla vytvořena nová tabulka, který byla přes cizí klíč spojena s
 tabulkou se záznamy. Tabulka byla vytvořena v modelu, a poté pomocí
 migrací byl přenesena do databáze. Obsahuje tedy pole ID, což je
+%% ML: strukturu databaze nemate nikde vysvetlenu, chybi diagram, cokoliv...
 primární klíč tabulky, Post, který je cizím klíčem k tabulce Cvut a
 sloupec Image, do kterého se zaznamenává cesta k danému souboru.
 
@@ -106,6 +112,7 @@ sloupec Image, do kterého se zaznamenává cesta k danému souboru.
 	\label{fig:Náhled tabulky CvutImages pro ukládání obrázk}              
 \end{figure}
 
+%% ML: korenovy
 V nastavení se dále určí rootovský adresář pro nahrávané soubory
 \textbf{MEDIA\_ROOT = os.path.join(BASE\_DIR, 'media')} a
 \textbf{MEDIA\_URL = '/media/'}.  A v poslední řadě se musí nastavit v
@@ -123,13 +130,13 @@ připojí funkce static.
 
 \section{Statické soubory}
 
-Pro řešení vizuální stránky webu jsou používány css soubory. Ve složce
+Pro řešení vizuální stránky webu jsou používány CSS soubory. Ve složce
 aplikace se tedy vytvoří adresář static a tomu v \emph{settings} se
 určí jeho nastavení pro statické soubory příkazy \textbf{STATIC\_URL =
   '/static/'} a \textbf{STATICFILES\_DIRS = [os.path.join(BASE\_DIR,
   'static')]}. Ve složce static je vytvořen adresář css, kde se
-nachází základní css soubor base.css. Ten je ovšem prázdný a není
-připojen k žádnému html souboru.
+nachází základní CSS soubor base.css. Ten je ovšem prázdný a není
+připojen k žádnému HTML souboru.
 
 \section{Nastavení jazyka a času}
 
