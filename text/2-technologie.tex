@@ -10,6 +10,7 @@
 \end{figure}
 
 Django je open source prostředí, pro tvorbu webových aplikací. Django
+%% ML: piste python s velkym pismenem (sladit v celem textu)
 je napsané v programovacím jazyku python a pracuje na bázi
 model-template-view. Model v tomto případě reprezentuje část, která je
 schopna komunikovat a pracovat s databází. Templates určují obsah
@@ -19,8 +20,10 @@ koncovým uživatelům.
 Django bylo vytvořeno v roce 2005 americkou společností The World
 Company. Jeho první verze byla označena 0.90 a vyšla 16. listopadu
 2005. Vývojáři pokračovali v jeho zdokonalování, kdy bylo během
+%% ML: v textu zbytecne anglikanismy 
 následujících pár let provedeno několik updatů. V roce 2008 byla
 vydána verze 1.0. Vývoj se nezastavil a po několika updatech byl v
+%% ML: navic nejde o "update", ale o verzi
 roce 2013 vydán velký update 1.5, který zajišťoval také podporu pro
 Python 3, dříve pouze Python 2. Dalším velkým updatem bylo vydání nové
 verze Django 2.0 na konci roku 2017. Ta zajišťovala plnou podporu pro
@@ -35,8 +38,9 @@ který je plánován na začátek roku 2022.
 \subsection{Django - Instalace a inicializace projektu}
 
 Django je framework pracující v jazyce Python, pro jehož aktuální
-verzi 3.1 je potřeba mít nainstalován verzi Pytohn 3.6 nebo
-vyšší. Nejjednodušší je pomocí příkazové řádky zpustit příkaz pip
+verzi 3.1 je potřeba mít nainstalován verzi Python 3.6 nebo
+%% ML: prikazy byste mel pro lepsi citelnost formatovat jinak (napr. \tt}
+vyšší. Nejjednodušší je pomocí příkazové řádky spustit příkaz pip
 install django, čímž by se měla nainstalovat nejaktuálnější verze
 Djanga. Po instalaci lze pro zobrazení aktuální verze použít příkaz
 django-admin --version. Po instalaci se opět pomocí příkazové řádky
@@ -45,7 +49,7 @@ startproject [název projektu]. Tímto se vytvoří nový adresář který
 vypadá následovně:
 
 \begin{itemize}
-	\item \lbrack Název proijektu\rbrack /
+	\item \lbrack Název projektu\rbrack /
 	\begin{itemize}
 		\item manage.py
 		\item \lbrack Název projektu\rbrack /
@@ -61,13 +65,14 @@ vypadá následovně:
 
 \vspace{6px}
 
+%% ML: packagem...
 \textbf{\_\_init\_\_.py} určuje, aby s adresářem bylo zacházeno jako s packagem.
 \vspace{6px}
 
-\textbf{setting.py} zde se definují všechna nastavené Django projektu. 
+\textbf{setting.py} zde se definují všechna nastavení Django projektu. 
 \vspace{6px}
 
-\textbf{urls.py} v projektovém adresáři definuje seznam url adres na
+\textbf{urls.py} v projektovém adresáři definuje seznam URL adres na
 úrovní projektu. Při založení je zde obsažena administrátorská
 stránka.  \vspace{6px}
 
@@ -101,6 +106,7 @@ příkazů. Zde je výčet těch nejdůležitějších a jejich popis.
   automaticky zobrazí ve výstupu.
 	
 \item \textit{python manage.py makemigrations [název aplikace]} -
+  %% ML: scan...
   tento příkaz provede scan modelu a porovná ho s databází. Pokud jsou
   nalezeny změny, vytvoří se nový soubor se stávajícími migracemi. Ten
   obsahuje SQL příkazy, jak by se měla vytvořit databáze podle modelu
@@ -151,6 +157,7 @@ python manage.py startapp [nazev aplikace]. Schéma je následující:
 \textbf{admin.py} slouží k registraci modelů do administrátorské
 aplikace a k jejich úpravě.  \vspace{6px}
 
+%% ML: chybi popis
 \textbf{apps.py} 
 \vspace{6px}
 
@@ -170,6 +177,8 @@ soubory, vytvořené při spuštění příkazu \textit{makemigrations}
 
 \subsection{Django – práce s databází}
 
+%% ML: hodnoceni jako napr. "nejlepsi" do textu prace prilis nepatri...
+%% ML: Django piste s velkym pismenem
 Jednou z nejlepších věcí, kterou django nabízí je jednoduchá a rychlá
 práce s databází. Při práci s databází se používá soubor models.py,
 který je při vytvoření projektu prázdný. Django standardně používá
@@ -181,6 +190,7 @@ a migrate vytvoří nebo upraví tabulky v naší databázi. S databází jako
 takovou tedy vůbec nemusíme pracovat. Při připojování, k již
 existující databázi lze příkazem inspectdb vygeneruje model stávající
 databáze. Django oficiálně podporuje databáze PostgreSQL, MariaDB,
+%% ML: addony
 MySQL, Oracle a SQLite. Jsou zde ovšem i komunitně vytvořené addony
 pro podporu NoSQL databáze MongoDB.
 
@@ -190,6 +200,8 @@ jmeno\_tabulky(models.Model). Každá třída pak obsahuje názvy
 jednotlivých sloupců a jejich datové typy. V závorce jsou pak obsaženy
 dodatečné informace jako například primární klíč, maximální délka
 proměnné atd
+%% ML: pouzijte jednotne formatovani, napr. tridu v tomto odstavci
+%% nemate vubec neformatovanu...
 \textit{first\_name=models.CharField(max\_length=30)}. Jednotlivé
 třídy dále mohou obsahovat další třídy, například meta, která obsahuje
 dodatečné informace o tabulce.
@@ -208,10 +220,12 @@ dodatečné informace o tabulce.
 
 Packages, neboli balíčky jsou nástroje pro usnadnění práce s
 djangem. Tyto balíčky mají mnoho funkcí, a to od změny vzhledu
+%% ML: administratorske
 stránky, až po implementaci nových funkcí do admin aplikace. Většina
 balíčků je tvořena komunitou a každý uživatel si také může vytvořit
 svůj vlastní. Pro nalezení vhodného balíčku slouží například stránka
 \textit{https://djangopackages.org}, kde lze najít všechna
+%% ML: GitHub neni stranka...
 rozšíření. Ty jsou zpravidla uloženy na stránce \textit{github}, kde
 je detailně popsána jejich dokumentace. Jejich implementace je opravdu
 jednoduchá, pomocí pip se nainstaluje příslušný balíček (např. pip
@@ -248,15 +262,19 @@ Docker je open source software používaný pro jednotný vývoj aplikací,
 které běží v izolovaných kontejnerech. Je primárně využíván na
 operačním systému Linux, ale je možné ho zprovoznit také na Windows
 nebo Mac OS X. Výhodou je také, že může běžet jak lokálně, tak na
+%% ML: zadokrovani maximalne v uvozovkach a vysvetlit
 cloudovém uložišti. Jeho užití spočívá v zadokrování aplikace a všech
 jejich částí. Díky tomu je poté zajištěn bezproblémový chod na
+%% ML: anglikanismus, navic nevysvetleny
 jakémkoliv jiném zařízení se stejným operačním systémem. Image pro
 Linux mohou běžet pouze na systémech s Linux a stejně tak je to pro
+%% ML: piste docker s velkym pismenem
 Windows. Aplikace spuštěná v dockeru je izolovaná, a nezasahuje do
 ostatních aplikací. Je zde také snadná možnost testovat nové verze
 knihoven a aplikací.
 
 Při zadokrování aplikace se nejprve vytvoří image, která obsahuje
+%% ML: u "imagi" uz nevim, co napsat... 
 všechny aplikace a nastavení. Z těchto imagí se poté vytvoří
 kontejner, který obsahuje také svou vlastní vrstvu, kde jsou uloženy
 všechny změny, které uživatel provedl.
@@ -266,6 +284,7 @@ všechny změny, které uživatel provedl.
 \section{Git}
 
 Git je open source verzovací systém, který se hojně používá při vývoji
+%% ML: na vsech bych netvrdil ;-)
 aplikací. Jeho použití je možné na všech platformách a jeho ovládání
 se provádí přes příkazový řádek nebo GUI. Git funguje na principu
 repozitářů, ve kterých jsou uloženy projekty. Repozitář obsahuje celý
@@ -290,6 +309,7 @@ Windows, Linux a MacOS. Vzhledem k tomu, že se vycházelo z MySQL, má
 MariaDB stejnou strukturu a indexování. Oproti MySQL má ovšem daleko
 rychlejší vývoj, což je způsobeno i tím, že je celý projekt open
 source. Její výhodou je rychlejší zpracování velkého objemu dat nebo
+%% ML: co presne mate na mysli?
 podpora různých enginů.
 
 \section{phpMyAdmin}
