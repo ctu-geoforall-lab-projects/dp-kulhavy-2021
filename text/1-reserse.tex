@@ -17,7 +17,7 @@ Hlavním faktorem při volbě metody zde byla úplná neznalost jazyka PHP,
 se kterým jsem se během studia ani mimo něj nesetkal. Jasnou volbou
 tedy bylo použití některého z python frameworků.
 
-\section{Volba python frameworku}
+\section{Volba Python frameworku}
 Výběr vhodného frameworku po tvorbu aplikace byl vzhledem k jejich
 %% ML: konstrukce jako "opravdu slozity" do technicke prace nepatri
 množství opravdu složitý. Mezi hlavní kritéria pro výběr frameworku
@@ -54,9 +54,9 @@ administrátorské rozhraní a možnost doinstalováním přídavných balíčk�
 poskytující jak grafické úpravy, tak přidané funkce. Jedním z nich je
 i balíček django-guardian zajišťující podporu per object permissions.
 
-%% ML: V textu michate jednotne cislo s mnoznym, lepsi je trpny rod
-Z těchto dvou frameworků jsem nakonec vybral pro tvorbu aplikace
-Django. To oproti Flasku disponovalo snadnou a rychlou práci s modelem
+
+Z těchto frameworků byl nakonec vybrán pro tvorbu aplikace framework
+Django. Ten oproti Flasku disponoval snadnou a rychlou práci s modelem
 databáze. Další výhodou je vývojáři implementované administrátorské
 rozhraní, které se nemusí doinstalovat pomocí přídavného balíčku. Z
 hlediska popularity a dostupnosti výukových materiálu jsou na tom oba
@@ -87,8 +87,8 @@ forkem původní MySQL. Od MySQL se liší pouze nepatrně a to přidanými
 novými funkcemi, odstraněním bugů z MySQL a měla by zajišťovat
 rychlejší operace s tabulkami.
 
-%% ML: vyhnete se anglikanismum
-\section{Automatizace deploymentu}
+
+\section{Automatizace nasazení aplikace}
 
 Jedním z hlavních úkolů je také automatizace deplymentu aplikace a
 zajištění bezproblémového chodu na všech zařízeních. Při této otázce
@@ -112,6 +112,31 @@ které umožňuje více nastavení kontejnerů a rozdělení aplikace do více
 kontejnerů. Dalším rozdílem oproti LXC je, že může být použit i na
 jiném operačním systému než je linux. Z těchto důvodů byl pro
 kontejnerizaci zvolen Docker.
+
+\section{Normalizace databáze}
+
+Normalizace databáze je reorganizace dat podle normalizačních standardů. 
+Používá se pro snížení nadbytečných dat v databázi, například při duplicitách 
+ve sloupcích. Normalizačních forem je pět, ale zpravidla se používají pouze 
+první tři stupně. Jednotlivé stupně na sebe navzájem navazují, pokud budeme 
+tedy chtít uplatnit třetí normalizační stupeň, musíme nejprve provést první a druhý.
+
+První stupeň je v zásadě použití selského rozumu. Jedná se o odstranění 
+duplicitních sloupců a sloupce, jež jsou kombinací jiných sloupců.
+
+Druhý stupeň nám říká, že duplicitní hodnoty by měly být z tabulky odstraněny 
+a přesunuty do nové tabulky, která je propojená cizím klíčem. Z tabulky se tedy 
+odstraní všechny hodnoty, které platí pro více záznamů.
+
+Třetí stupeň udává, že by tabulka neměla obsahovat hodnoty, které jsou na sobě závislé. 
+
+Ve čtvrtém stupni by záznamy neměly obsahovat více nezávislých hodnot jedné podmnožiny. 
+Takovéto hodnoty by opět mely být převedeny do samostatné tabulky a spojeny cizím klíčem.
+
+Pátý stupeň platí, pokud není možné tabulku dále dělit bez ztráty dat. Po 
+rozdělení by došlo ke ztrátě vztahů, které mezi daty platí.
+
+
 
 \textbf{}
 \textit{}

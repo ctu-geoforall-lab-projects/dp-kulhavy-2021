@@ -167,7 +167,7 @@ Po vytvoření základní uživatelské aplikace a úvahách o její funkci jsme
 
 \section{Per object permission}
 
-Dalším úkolem bylo zajištění per object permissions, tedy že uživatel nebude moci editovat celou tabulku, ale jen objekty, ke kterým bude mít udělená práva. Tuto možnost zajišťuje přídavný balíček django-guardian, který ovšem po jeho instalaci a implementaci nefungoval správně, a i po nastavení práv uživatel nemohl daný objekt editovat. Vymyslel se tedy systém za použití autentifikačního systému, kdy se do tabulky Cvut přidá nová proměnná managers, ve které se budou moci vybírat registrovaní uživatelé. Tato proměnná vytváří v databázi novou tabulku, která obsahuje ID, ID uživatele a ID objektu v tabulce. Ve vytvořených třídách v \emph{admin.py} je poté možnost pomocí funkcí has_view_permission(), has_add_permission(), has_change_permission() a has_delete_permission() modifikovat práva k tabulkám. Zde se tedy změnilo nastavení funkcí tak, aby tabulky mohl editovat superuživatel, uživatel, který to má udělená práva editovat celou tabulku nebo uživatel, který je přidaný v tabulce managers. 
+Dalším úkolem bylo zajištění per object permissions, tedy že uživatel nebude moci editovat celou tabulku, ale jen objekty, ke kterým bude mít udělená práva. Tuto možnost zajišťuje přídavný balíček django-guardian, který ovšem po jeho instalaci a implementaci nefungoval správně, a i po nastavení práv uživatel nemohl daný objekt editovat. Vymyslel se tedy systém za použití autentifikačního systému, kdy se do tabulky Cvut přidá nová proměnná managers, ve které se budou moci vybírat registrovaní uživatelé. Tato proměnná vytváří v databázi novou tabulku, která obsahuje ID, ID uživatele a ID objektu v tabulce. Ve vytvořených třídách v \emph{admin.py} je poté možnost pomocí funkcí has\_view\_permission(), has\_add\_permission(), has\_change\_permission() a has\_delete\_permission() modifikovat práva k tabulkám. Zde se tedy změnilo nastavení funkcí tak, aby tabulky mohl editovat superuživatel, uživatel, který to má udělená práva editovat celou tabulku nebo uživatel, který je přidaný v tabulce managers. 
 
 
 \section{Nastavení zobrazení dat a jejich vyhledávání}
@@ -177,7 +177,7 @@ Django disponuje řadou funkcí pro nastavení zobrazení dat v administrátorsk
 
 \section{Použití balíčku admin\_interface}
 
-Při hledání jednoduché a efektivní cesty pro úpravu administrátorského prostření byl vybrán balíček \emph{admin_interface}. Umožňuje superuživateli po přihlášení do aplikace možnost editovat vizuální stránku aplikace jako změnu loga, nadpisu nebo barvy textu a pozadí. Instalace viz Django balíčky. Pro správnou funkci je nutno \textbf{INSTALLED\_APPS} v \emph{settings.py} rozšířit nejen o \emph{admin\_interface} ale také o \emph{colorfield}.
+Při hledání jednoduché a efektivní cesty pro úpravu administrátorského prostření byl vybrán balíček \emph{admin\_interface}. Umožňuje superuživateli po přihlášení do aplikace možnost editovat vizuální stránku aplikace jako změnu loga, nadpisu nebo barvy textu a pozadí. Instalace viz Django balíčky. Pro správnou funkci je nutno \textbf{INSTALLED\_APPS} v \emph{settings.py} rozšířit nejen o \emph{admin\_interface} ale také o \emph{colorfield}.
 
 
 

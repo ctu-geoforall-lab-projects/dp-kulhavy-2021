@@ -5,8 +5,8 @@
 
 Tato diplomová práce navazuje na započatý projekt z předmětu Free
 %% ML: ja -> autor prace
-Software GIS. Na projektu jsem se účastnil já, Tomáš Lauwerys a Michal
-Zíma. Projekt měl za úkol vytvořit jednoduchou webovou aplikaci, kdy
+Software GIS. Na projektu jsem se tak0 podílel autor práce. 
+Projekt měl za úkol vytvořit jednoduchou webovou aplikaci, kdy
 %% ML: dat -> zaznamy
 přihlášení uživatelé mohli zobrazovat, vytvářet, editovat a mazat dat
 z databáze. Databáze pro tento projekt byla pouze cvičná a obsahovala
@@ -24,24 +24,24 @@ databázi.
 
  \newpage
  
- \section{O aplikaci}
+ \section{Použití zkušební databáze}
+ 
+Na začátku projektu byla používána pouze zkušební databáze, jejíž použití 
+bylo z důvodu neznalosti přesné struktury finální databáze. Zkušební databáze 
+byla použita na začátku projektu pro inicializaci aplikace, a vytvoření základních 
+funkcionalit. Databáze obsahovala pouze jednu tabulku s textovými daty.
 
- V aplikaci jsou použity pohledy založeny na třídách, které se v
- Pythonu používají pro nahrazení pohledů jako funkcí. Použity jsou
- základní pohledy jako ListView pro zobrazení většího obsahu tabulky
- nebo CreateView pro uložení dat do databáze. V aplikaci v soubory
- \emph{views.py} jsou tedy vytvořeny třídy pohledů pro každou URL
- adresu. V souboru \emph{urls.py} jsou propojeny URL adresy, pohledy a
- HTML šablony, na které se odkazují. Složka \emph{templates} poté
- obsahuje html soubory jednotlivých zobrazovaných stránek. Dále je v
- aplikaci v \emph{models.py} zobrazena struktura celé databáze.
 
- V adresáři projektu je pak v \emph{settings.py} nastaveno připojení k
- databázi, importována django aplikace, připojen adresář obsahující
- složku \emph{templates} nebo nastavení domovské adresy. Soubor
- \emph{urls.py} kromě administrátorské stránky také obsahuje připojení
- aplikace, kde se tedy odkazuje na soubor \emph{urls.py} v adresáři
- aplikace.
+\section{Databáze fondu Národního muzea}
+
+Databáze fondů Národního muzea obsahuje objekty, které se budou ve 
+vyvíjené aplikaci zobrazovat a budou rozšířena o další data. Všechna data 
+v této databázi jsou obsažena v jedná tabulace. Část sloupců v této tabulce 
+obsahuje informace o objektu a část o obrázku, který je k němu přidělen. 
+Jednotlivé objekty ovšem disponují více obrázky, kdy se pro každý obrázek 
+vytváří nový databázový objekt. Zde dochází k duplikování velké části dat, 
+kdy se sloupce s informacemi o objektu kopírují a mění se pouze část s 
+obrázky a jejich metadaty. Databáze je tedy v nenormalizované formě.
 
 \textcolor{red}{přiložit obrázky souborů?}
 

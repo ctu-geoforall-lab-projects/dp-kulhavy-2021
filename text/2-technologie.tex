@@ -10,8 +10,7 @@
 \end{figure}
 
 Django je open source prostředí, pro tvorbu webových aplikací. Django
-%% ML: piste python s velkym pismenem (sladit v celem textu)
-je napsané v programovacím jazyku python a pracuje na bázi
+je napsané v programovacím jazyku Python a pracuje na bázi
 model-template-view. Model v tomto případě reprezentuje část, která je
 schopna komunikovat a pracovat s databází. Templates určují obsah
 zobrazení a jsou realizovány pomocí HTML. View zobrazuje daný obsah
@@ -20,17 +19,15 @@ koncovým uživatelům.
 Django bylo vytvořeno v roce 2005 americkou společností The World
 Company. Jeho první verze byla označena 0.90 a vyšla 16. listopadu
 2005. Vývojáři pokračovali v jeho zdokonalování, kdy bylo během
-%% ML: v textu zbytecne anglikanismy 
-následujících pár let provedeno několik updatů. V roce 2008 byla
+následujících pár let provedeno několik aktualizací. V roce 2008 byla
 vydána verze 1.0. Vývoj se nezastavil a po několika updatech byl v
-%% ML: navic nejde o "update", ale o verzi
-roce 2013 vydán velký update 1.5, který zajišťoval také podporu pro
-Python 3, dříve pouze Python 2. Dalším velkým updatem bylo vydání nové
+roce 2013 vydána verze 1.5, která zajišťovala také podporu pro
+Python 3, dříve pouze Python 2. Další velkou aktualizací bylo vydání nové
 verze Django 2.0 na konci roku 2017. Ta zajišťovala plnou podporu pro
 Python 3 a nadála už není možné pracovat s verzí Python 2. Aktuální
 verze Djanga je 3.1, s tím že se plánuje v blízké době vydat verzi 3.2
-po které by měl následovat další velký update v podobě Djanga 4.0,
-který je plánován na začátek roku 2022.
+po které by měl následovat další velká aktualizace v podobě Djanga 4.0,
+která je plánována na začátek roku 2022.
 
 \newpage
 
@@ -39,13 +36,12 @@ který je plánován na začátek roku 2022.
 
 Django je framework pracující v jazyce Python, pro jehož aktuální
 verzi 3.1 je potřeba mít nainstalován verzi Python 3.6 nebo
-%% ML: prikazy byste mel pro lepsi citelnost formatovat jinak (napr. \tt}
-vyšší. Nejjednodušší je pomocí příkazové řádky spustit příkaz pip
-install django, čímž by se měla nainstalovat nejaktuálnější verze
+vyšší. Nejjednodušší je pomocí příkazové řádky spustit příkaz {\tt pip
+install django}, čímž by se měla nainstalovat nejaktuálnější verze
 Djanga. Po instalaci lze pro zobrazení aktuální verze použít příkaz
 django-admin --version. Po instalaci se opět pomocí příkazové řádky
-provede vytvoření projektu v aktuální složce příkazem django-admin
-startproject [název projektu]. Tímto se vytvoří nový adresář který
+provede vytvoření projektu v aktuální složce příkazem {\tt django-admin
+startproject [název projektu]}. Tímto se vytvoří nový adresář který
 vypadá následovně:
 
 \begin{itemize}
@@ -65,8 +61,7 @@ vypadá následovně:
 
 \vspace{6px}
 
-%% ML: packagem...
-\textbf{\_\_init\_\_.py} určuje, aby s adresářem bylo zacházeno jako s packagem.
+\textbf{\_\_init\_\_.py} určuje, aby s adresářem bylo zacházeno jako s celkem.
 \vspace{6px}
 
 \textbf{setting.py} zde se definují všechna nastavení Django projektu. 
@@ -97,7 +92,7 @@ Pomocí nástroje manage.py se v Djangu spouští řada důležitých
 příkazů. Zde je výčet těch nejdůležitějších a jejich popis.
 
 \begin{itemize}
-\item \textit{python manage.py runserver} - tento příkaz spouští
+\item {\tt python manage.py runserver} - tento příkaz spouští
   aplikaci na lokálním serveru. Standardně je to na adrese
   127.0.0.1:8000. Aplikace je po spuštění přístupná pouze z daného
   zařízení a není možné se k ní připojit ani v rámci lokální
@@ -105,7 +100,7 @@ příkazů. Zde je výčet těch nejdůležitějších a jejich popis.
   framework projde celý projekt pro nalezení případné chyby a změna se
   automaticky zobrazí ve výstupu.
 	
-\item \textit{python manage.py makemigrations [název aplikace]} -
+\item {\tt python manage.py makemigrations [název aplikace]} -
   %% ML: scan...
   tento příkaz provede scan modelu a porovná ho s databází. Pokud jsou
   nalezeny změny, vytvoří se nový soubor se stávajícími migracemi. Ten
@@ -114,13 +109,13 @@ příkazů. Zde je výčet těch nejdůležitějších a jejich popis.
   potažmo aplikací, lze tedy vytvořit migrace pouze pro jednu nebo
   více aplikací, zadáním jejich názvů.
 
-\item \textit{python manage.py migrate} - spuštěním tohoto příkazu se
+\item {\tt python manage.py migrate} - spuštěním tohoto příkazu se
   synchronizuje databáze s modelem podle migračního souboru, který je
-  generovaný z příkazu \newline \textit{makemigrations}.
+  generovaný z příkazu \newline {\tt makemigrations}.
 	
-\item \textit{python manage.py inspectdb} - příkaz vytvoří schéma
+\item {\tt python manage.py inspectdb} - příkaz vytvoří schéma
   připojené databáze a uloží ho do paměti. Vytvoření model.py souboru
-  se pak provede spuštěním příkazu \textit{python manage.py inspectdb
+  se pak provede spuštěním příkazu {\tt python manage.py inspectdb
     > models.py}.
 
 \end{itemize}
@@ -131,8 +126,8 @@ příkazů. Zde je výčet těch nejdůležitějších a jejich popis.
 
 Po založení projektu je potřeba vytvořit aplikaci. Počet použitých
 aplikací v projektu není omezen a jejích výhodou je, že je lze
-opětovně použít v dalších projektech. Aplikace se vytvoří příkazem
-python manage.py startapp [nazev aplikace]. Schéma je následující:
+opětovně použít v dalších projektech. Aplikace se vytvoří příkazem{\tt
+python manage.py startapp [nazev aplikace]}. Schéma je následující:
 
 \begin{itemize}
 	\item \lbrack Název aplikace\rbrack /
@@ -177,9 +172,8 @@ soubory, vytvořené při spuštění příkazu \textit{makemigrations}
 
 \subsection{Django – práce s databází}
 
-%% ML: hodnoceni jako napr. "nejlepsi" do textu prace prilis nepatri...
-%% ML: Django piste s velkym pismenem
-Jednou z nejlepších věcí, kterou django nabízí je jednoduchá a rychlá
+
+Další z věcí, kterou Django nabízí je jednoduchá a rychlá
 práce s databází. Při práci s databází se používá soubor models.py,
 který je při vytvoření projektu prázdný. Django standardně používá
 databází SQLite, která se automaticky vytvoří v adresáři projektu. V
@@ -190,8 +184,7 @@ a migrate vytvoří nebo upraví tabulky v naší databázi. S databází jako
 takovou tedy vůbec nemusíme pracovat. Při připojování, k již
 existující databázi lze příkazem inspectdb vygeneruje model stávající
 databáze. Django oficiálně podporuje databáze PostgreSQL, MariaDB,
-%% ML: addony
-MySQL, Oracle a SQLite. Jsou zde ovšem i komunitně vytvořené addony
+MySQL, Oracle a SQLite. Jsou zde ovšem i komunitně vytvořené balíčky
 pro podporu NoSQL databáze MongoDB.
 
 Model obsahuje všechny informace o tabulkách a jejich
@@ -200,10 +193,8 @@ jmeno\_tabulky(models.Model). Každá třída pak obsahuje názvy
 jednotlivých sloupců a jejich datové typy. V závorce jsou pak obsaženy
 dodatečné informace jako například primární klíč, maximální délka
 proměnné atd
-%% ML: pouzijte jednotne formatovani, napr. tridu v tomto odstavci
-%% nemate vubec neformatovanu...
 \textit{first\_name=models.CharField(max\_length=30)}. Jednotlivé
-třídy dále mohou obsahovat další třídy, například meta, která obsahuje
+třídy dále mohou obsahovat další třídy, například \textit{meta}, která obsahuje
 dodatečné informace o tabulce.
 
 \vspace{15px}
@@ -216,37 +207,35 @@ dodatečné informace o tabulce.
 
 \newpage
 
-\subsection{Django – packages}
+\subsection{Django - balíčky}
 
 Packages, neboli balíčky jsou nástroje pro usnadnění práce s
 djangem. Tyto balíčky mají mnoho funkcí, a to od změny vzhledu
-%% ML: administratorske
-stránky, až po implementaci nových funkcí do admin aplikace. Většina
+stránky, až po implementaci nových funkcí do administrátorské aplikace. Většina
 balíčků je tvořena komunitou a každý uživatel si také může vytvořit
 svůj vlastní. Pro nalezení vhodného balíčku slouží například stránka
 \textit{https://djangopackages.org}, kde lze najít všechna
-%% ML: GitHub neni stranka...
-rozšíření. Ty jsou zpravidla uloženy na stránce \textit{github}, kde
+rozšíření. Ty jsou zpravidla uloženy na stránce \textit{github.com}, kde
 je detailně popsána jejich dokumentace. Jejich implementace je opravdu
-jednoduchá, pomocí pip se nainstaluje příslušný balíček (např. pip
-install django-rest). Dále se v projektu v souboru settings.py přidá
+jednoduchá, pomocí pip se nainstaluje příslušný balíček (např. {\tt pip
+install django-rest)}. Dále se v projektu v souboru settings.py přidá
 rozšíření do \textbf{INSTALLED\_APPS} a provede se migrace pro
 vytvoření tabulek v databázi.
 
-\subsection{Django – admin site}
+\subsection{Django - administrátorské rozhraní}
 
-Jeden z nejdůležitějších komponentů djanga je administrátorské
+Jeden z nejdůležitějších komponentů Djanga je administrátorské
 rozhraní, které dovoluje oprávněným uživatelům pracovat s daty
 uloženými v databázi. Pomocí registrovaných modelů, může uživatel s
 oprávněním prohlížet, přidávat, upravovat a mazat data v jednotlivých
 modelech. Administrátorská aplikace je od té uživatelské oddělena a je
-možné se do ní dostat přidáním /admin za webovou adresu. Pro
+možné se do ní dostat přidáním \textit{/admin} za webovou adresu. Pro
 přihlášení musí být uživatel registrován jako \textit{staff} a poté mu
 musí být udělenu práva k jednotlivým modelům. V aplikaci je možné
 nastavit práva jednotlivcům, popřípadě skupinám, do kterých se poté
 uživatelé přidávají.
 
-Registrace modelů a jejich následná customizace se prování v souboru
+Registrace modelů a jejich následná úprava se prování v souboru
 admin.py. Nejprve se modely musí importovat a poté registrovat pro
 zobrazení v administrátorském rozhraní. Pokud je potřeba tabulky
 modifikovat, například zobrazit jen některá data, je třeba vytvořit ke
@@ -284,8 +273,7 @@ všechny změny, které uživatel provedl.
 \section{Git}
 
 Git je open source verzovací systém, který se hojně používá při vývoji
-%% ML: na vsech bych netvrdil ;-)
-aplikací. Jeho použití je možné na všech platformách a jeho ovládání
+aplikací. Jeho použití je možné na řadě platforem a ovládání
 se provádí přes příkazový řádek nebo GUI. Git funguje na principu
 repozitářů, ve kterých jsou uloženy projekty. Repozitář obsahuje celý
 projekt a jeho kompletní historii provedených změn. Každý člen týmu je
