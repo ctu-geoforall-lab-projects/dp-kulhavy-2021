@@ -3,29 +3,23 @@
 
 \section{Volba metody pro tvorbu webové aplikace}
 
-%% ML: moznosti je radove vic (programovaci jazyk, framework) a pod,
-%% zapominate na Javascript
-%% ML: Vetu preformulujte
-%% ML: michate programovaci jazyk s frameworkem, navic tento pojem ani
-%% nevysvetlujete
-Při volbě, jakou metodu pro tvorbu aplikace použít, se nabízely dvě
-variant. První variantou by bylo použit skriptovací jazyka PHP a
-druhou použít python framework pro tvorbu webových aplikací.
+Při volbě, jakou metodu pro tvorbu aplikace použít, se nabízelo několik 
+možností jak ji vytvořit. Aplikace by mohla být vytvořena za použit 
+skriptovací jazyka PHP, Javascriptu nebo například python frameworku 
+pro tvorbu webových aplikací. 
 
-%% ML: Podobna veta do reserse spise nepatri, zkuste preformulovat
-Hlavním faktorem při volbě metody zde byla úplná neznalost jazyka PHP,
-se kterým jsem se během studia ani mimo něj nesetkal. Jasnou volbou
-tedy bylo použití některého z python frameworků.
+Ze zadání projektového týmu ovšem vyplynulo, že by aplikace měla být 
+napsána v jazyce Python z důvodu udržitelnosti kódu. Volba tedy padla 
+na Python frameworky.
 
 \section{Volba Python frameworku}
-Výběr vhodného frameworku po tvorbu aplikace byl vzhledem k jejich
-%% ML: konstrukce jako "opravdu slozity" do technicke prace nepatri
-množství opravdu složitý. Mezi hlavní kritéria pro výběr frameworku
-%% ML: vyhnete se neprelozenym anglickym pojmum, pokud to jde
-jsme zařadili snadnou práce s databází, implementovat per object
-permissions a dostupnost výukových materiálů a komunitní
-podpora. Nakonec se vybíralo se ze dvou frameworků, a to Flask a
-Django.
+Frameworkem je označována platforma, která se používá pro tvorbu aplikací. 
+Je to soubor podpůrných programů a knihoven, které mají za cíl usnadnit 
+jejich vývoj. Výběr vhodného frameworku byl vzhledem k jejich množství 
+složitý. Mezi hlavní kritéria pro výběr frameworku se proto zařadila snadná 
+práce s databází, implementace per object permissions a dostupnost 
+výukových materiálů a komunitní podpora. Díky těmto kritériím se nakonec 
+vybíralo ze dvou frameworků, a to Flask a Django.
 
 \begin{figure}[H] \centering
     \includegraphics[width=240pt]{./pictures/1-django-vs-flask.jpeg}
@@ -41,8 +35,7 @@ administrátorské rozhraní pro správu uživatelů a objektů v
 databázi. Výhodou je jeho velká obliba v komunitě, kdy v roce 2020 měl
 druhé místo na GitHubu z webových frameworků, a díky tomu disponuje
 spoustou materiálů a tutoriálů. Avšak velká nevýhoda flasku pro vývoj
-%% ML: datovy model ?
-naší aplikace je, že nedisponuje data modely. Pokud bychom v průběhu
+naší aplikace je, že nedisponuje datovými modely. Pokud bychom v průběhu
 vývoje chtěli přidat sloupec do naší databáze, musíme to udělat ručně
 v databázi a poté ho přidat do třídy ve webové aplikaci.
 
@@ -68,12 +61,9 @@ ostatní frameworky.
 \section{Volba databáze}
 
 Jedním z hlavních úkolů bylo vytvoření databáze, ze které se budou
-%% ML: nami...
-zobrazovat poskytnutá data z projektu Viskalia, námi rozšířená o další
-%% ML: centralni DB bezi take na MariaDB
-položky. Data zprostředkovaná Národním muzeem byla uložena v MySQL
-%% ML: obrazova data nejsou v DB, ale v souborovem systemu
-databázi a jednalo se jak o textová, tak obrazová data uložena v
+zobrazovat poskytnutá data z projektu Viskalia, rozšířená o další
+položky. Textová data zprostředkovaná Národním muzem byla uložena 
+v MariaDB databázi a obrazová data byla v souborovém systému
 tabulkách. Příslušná databáze ovšem postrádá jakoukoli normalizaci a
 data obsahují spoustu duplicit. Nabízí se proto otázka, zda provést
 normalizaci dat a opět použít relační databázi, nebo použít nějakou z
@@ -81,12 +71,8 @@ nerelačních databází. Asi zásadní problém s NoSQL databází, který by
 mohl nastat je problém v komunikaci s frameworkem pro vývoj webových
 aplikací. Ty v zásadě nemají problém komunikovat s jakýmkoliv typem
 relační databáze, ovšem často nemají engine pro databáze typu
-NoSQL. Zvolili jsme tedy relační databázi a to MariaDB, která je
-forkem původní MySQL. Od MySQL se liší pouze nepatrně a to přidanými
-%% ML: vyhnete se anglikanismum
-novými funkcemi, odstraněním bugů z MySQL a měla by zajišťovat
-rychlejší operace s tabulkami.
-
+NoSQL. Zvolili jsme tedy relační databázi a to MariaDB z důvodu poskytnutí 
+dat právě z tohoto databázového systému.
 
 \section{Automatizace nasazení aplikace}
 
@@ -108,8 +94,7 @@ a působí tedy spíše jako virtuální počítač. Docker oproti tomu žádné
 takové prostředí nemá a běží pouze separovaně na operačním systému
 uživatele. Dalším hlavním rozdílem je větší propracovanost Dockeru,
 které umožňuje více nastavení kontejnerů a rozdělení aplikace do více
-%% ML: dve vety po sobe zacinaji slovem "Dalsim"
-kontejnerů. Dalším rozdílem oproti LXC je, že může být použit i na
+kontejnerů. Oproti LXC může být Docker použit i na
 jiném operačním systému než je linux. Z těchto důvodů byl pro
 kontejnerizaci zvolen Docker.
 
@@ -138,8 +123,6 @@ rozdělení by došlo ke ztrátě vztahů, které mezi daty platí.
 
 
 
-\textbf{}
-\textit{}
 
 
 

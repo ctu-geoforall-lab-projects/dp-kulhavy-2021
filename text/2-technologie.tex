@@ -101,8 +101,7 @@ příkazů. Zde je výčet těch nejdůležitějších a jejich popis.
   automaticky zobrazí ve výstupu.
 	
 \item {\tt python manage.py makemigrations [název aplikace]} -
-  %% ML: scan...
-  tento příkaz provede scan modelu a porovná ho s databází. Pokud jsou
+  tento příkaz provede porovnání modelu a s databází. Pokud jsou
   nalezeny změny, vytvoří se nový soubor se stávajícími migracemi. Ten
   obsahuje SQL příkazy, jak by se měla vytvořit databáze podle modelu
   definovaném v aplikaci. Příkaz se definuje zadáním jména aplikace,
@@ -134,7 +133,7 @@ python manage.py startapp [nazev aplikace]}. Schéma je následující:
  	\begin{itemize}
  		\item \_\_init\_\_.py
 		\item admin.py
-		\item app.spy
+		\item apps.py
 		\item models.py
 		\item urls.py
 		\item \lbrack migrations\rbrack /
@@ -152,8 +151,8 @@ python manage.py startapp [nazev aplikace]}. Schéma je následující:
 \textbf{admin.py} slouží k registraci modelů do administrátorské
 aplikace a k jejich úpravě.  \vspace{6px}
 
-%% ML: chybi popis
-\textbf{apps.py} 
+\textbf{apps.py} je konfigurační soubor, který obsahuje metadata o 
+aplikaci.
 \vspace{6px}
 
 \textbf{models.py} obsahuje model databáze použitý v aplikaci.
@@ -163,7 +162,8 @@ aplikace a k jejich úpravě.  \vspace{6px}
 \vspace{6px}
 
 \textbf{tests.py} obsahuje testovací metody, které se spustí při
-testování funkčnosti aplikace.  \vspace{6px}
+testování funkčnosti aplikace.
+\vspace{6px}
 
 \textbf{migrations} ve složce migrations se nacházejí všechny migrační
 soubory, vytvořené při spuštění příkazu \textit{makemigrations}
@@ -296,9 +296,7 @@ podporuje řadu operačních systémů včetně těch nejrozšířenějších ja
 Windows, Linux a MacOS. Vzhledem k tomu, že se vycházelo z MySQL, má
 MariaDB stejnou strukturu a indexování. Oproti MySQL má ovšem daleko
 rychlejší vývoj, což je způsobeno i tím, že je celý projekt open
-source. Její výhodou je rychlejší zpracování velkého objemu dat nebo
-%% ML: co presne mate na mysli?
-podpora různých enginů.
+source.
 
 \section{phpMyAdmin}
 

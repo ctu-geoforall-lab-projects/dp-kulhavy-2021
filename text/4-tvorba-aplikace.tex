@@ -29,9 +29,8 @@ tvorbě aplikace.
 
 Prvním větším úkolem bylo vytvořit aplikace, která bude zobrazovat
 data, a po přihlášení je bude moci uživatel také přidávat, mazat a
-editovat. Nejprve se tady do adresáře aplikace přidala soubor urls.py,
-%% ML: adresar chybne
-který se následně připojil do projektového adresáře urls.py. Tento
+editovat. Nejprve se tady do adresáře aplikace přidala soubor  \emph{urls.py},
+který se následně připojil k \emph{urls.py} v projektovém adresáři. Tento
 způsob je výhodný při použití více aplikace, kdy si každá aplikace
 uchovává své URL adresy a projekt je tak přehlednější. Pokračovalo se
 vytvořením pohledů založených na třídách, které se v Pythonu používají
@@ -113,8 +112,8 @@ Pro zobrazení obrázků ještě musel být doinstalován přídavný modul Pill
 	\label{fig:Náhled tabulky CvutImages pro ukládání obrázk}              
 \end{figure}
 
-%% ML: korenovy
-V nastavení se dále určí rootovský adresář pro nahrávané soubory
+
+V nastavení se dále určí kořenový adresář pro nahrávané soubory
 \textbf{MEDIA\_ROOT = os.path.join(BASE\_DIR, 'media')} a
 \textbf{MEDIA\_URL = '/media/'}.  A v poslední řadě se musí nastavit v
 projektovém urls.py media soubory, které django samo neumí
@@ -178,6 +177,63 @@ Django disponuje řadou funkcí pro nastavení zobrazení dat v administrátorsk
 \section{Použití balíčku admin\_interface}
 
 Při hledání jednoduché a efektivní cesty pro úpravu administrátorského prostření byl vybrán balíček \emph{admin\_interface}. Umožňuje superuživateli po přihlášení do aplikace možnost editovat vizuální stránku aplikace jako změnu loga, nadpisu nebo barvy textu a pozadí. Instalace viz Django balíčky. Pro správnou funkci je nutno \textbf{INSTALLED\_APPS} v \emph{settings.py} rozšířit nejen o \emph{admin\_interface} ale také o \emph{colorfield}.
+
+
+
+\section{Tvorba databáze}
+
+Po vytvoření základních funkcionalit aplikace byla projektovému týmu zprostředkována databáze s daty, která se mají zobrazovat. Forma poskytnutých dat byla specifikována v kapitole textcolor{red}{(databáze …)} . Django nedisponuje jednoduchým řešením, jak redukovat duplicitní záznamy a přiřadit jednotlivé obrázky k jednomu záznamu. Úkolem projektového týmu tedy bylo vymyslet řešení, které by tento problém odstranilo. Jako nejlepší řešení se ukázalo z původní tabulky (base\_data) exportovat data se sloupci, které příslušely k jednotlivým objektům a vložit je do nové tabulky. Tímto vznikla samostatná tabulka všech objektů (cvut). Dále se z původní tabulky vybrali sloupce, kde byly umístěny informace o uložených fotografiích a byly opět vloženy do samostatné tabulky (base\_images). Tato tabulka byla pomocí cizího klíče propojena s tabulkou cvut, kde se fotografie odkazovali na jednotlivé objekty. Data se tedy dostaly do normalizované podoby podle třetího stupně.
+
+
+\section{Zadokrování aplikace a databáze}
+
+Cílem projektového týmu bylo také vytvořit prostředí pro jednotný vývoj aplikace. Toto prostředí by mělo obsahovat jak aplikaci, tak databázi. Na začátku byl vytvořen hlavní adresář, do kterého se umístili složky aplikace a databáze. Ve složce aplikace byl vytvořen dockerfile, podle kterého se bude vytvářet jeho image. Je zde také umístěn soubor requirements, který přímo definuje verze přídavných balíčků. Součástí je dále skript, který upravuje databázi dle kapitoly (tvorba databáze). Ve složce databáze je opět obsažen soubor dockerfile, a requirements, kde je definována verze databáze MariaDB. Dále je zde synchronizační skript, který přebírá data z centrální databáze a vloží je do této, nově vytvořené databáze. Součástí je nejen přebírání dat z databáze ale také obrázků, které jsou uloženy na serveru. YAML file? Phpmyadmin?
+
+
+\section{Doplnění nové databáze}
+
+Tato databáze už obsahuje data z centrální databáze, které se pomocí skriptu upravily dle kapitoly (tvorba databáze). Po konzultaci projektového týmu se dospělo k závěru, že se k jednotlivým objektům budou přidávat nejen obrázkové soubory, ale také modely a jiné dokumenty. Vytvořila se tedy tabulka CvutFiles, která odpovídala tabulce z kapitoly (pridavani obrazku), ovšem s tím rozdílem že místo ImageFile byl použit FileField a byla doplněna o textové informace jako popis nebo typ dokumenty. Tabulka Cvut se opět rozšířila o sloupec managers viz kapitola (Per object permission)
+
+\section{Úprava admin prostředí}
+
+S přidáním nové tabulky a nových proměnných bylo potřeba upravit zobrazení v administrátorském prostředí. Data z centrální databáze uživatelé nebudou moci přidávat editovat ani mazat, proto u tabulek Cvut a base\_images byly tyto možnosti úplně odstraněny a tabulka base\_images byla nastavena, aby se její fotografie, které jsou v ní uložené zobrazovali u jednotlivých objektů. U tabulky CvutFiles byla nastavena možnost přidávání, editace nebo mazání souborů superuživatelům a uživatelům s oprávněním k danému objektu. Bylo také upraveno zobrazení dat jak v hlavní nabídce, tak na stránce zobrazující informace o daném objektu.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
