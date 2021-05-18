@@ -8,9 +8,9 @@ správně, a obsahovala zbytečně složitý, a chybný kód. Začalo se tedy
 od začátku. Nejprve byla vytvořen projekt příkazem \emph{django-admin
   startproject mysite}. V projektu následně byla vytvořena aplikace
 pomocí \emph{python manage.py startapp}. Aplikace byla v
-\emph{settings.py} přidána do \textbf{INSTALLED\_APPS}. Dále se
+\emph{settings.py} přidána do INSTALLED\_APPS. Dále se
 nastavilo připojení k databázi. V \emph{settings.py} se tedy v
-\textbf{DATABASES} se změnil engine na MySQL, protože Django v základu
+DATABASES se změnil engine na MySQL, protože Django v základu
 používá SQLite. Změnilo se ještě NAME, USER, PASSWORD, HOST A PORT,
 protože databáze byla provozována na školním serveru
 geo102.fsv.cvut.cz. Po připojení se musel vygenerovat model databáze,
@@ -51,10 +51,8 @@ definuje model, který se má zobrazit a template\_name neboli název
 
 V souboru \emph{urls.py} jsou propojeny URL adresy, pohledy a HTML
 šablony, na které se odkazují. Do urls.py musí být zároveň importovány
-všechny použité pohledy. Dále se provede import \emph{path}. Poté se
-sestaví \emph{urlpatterns}, což je seznam, který obsahuje jednotlivé
-%% ML: projdete formatovani, nekde mate nazev funkce/promennych
-%% naformatovany, jinde ne...
+všechny použité pohledy. Dále se provede import path. Poté se
+sestaví urlpatterns, což je seznam, který obsahuje jednotlivé
 adresy. Ty jsou v něm uvedeny ve funkci path, která má dva povinné
 argumenty, route a view a dva nepovinné, name a kwargs. Route uvádí
 adresu, pod jakou se bude stránka načítat a view odkazuje na
@@ -75,14 +73,12 @@ jednotlivé šablony. Šablony jsou vždy vytvořeny s podmínkou \emph{if
   user.is\_authenticated}, tedy pokud je uživatel přihlášen, zobrazí
 se mu na stránce možnosti data editovat, vytvářet a mazat. S tímto je
 spojena ještě další změna v \emph{settings.py}, kde je přidáno
-%% ML: najednou se objevuje tucne pismo, proc?
-\textbf{LOGIN\_REDIRECT\_URL = 'home'} a \textbf{LOGOUT\_REDIRECT\_URL
-  = 'home'} které uživatele po přihlášení a odhlášení přesměruje na
+LOGIN\_REDIRECT\_URL = 'home' a LOGOUT\_REDIRECT\_URL
+  = 'home' které uživatele po přihlášení a odhlášení přesměruje na
 domovskou stránku. Ve složce \emph{templates} je ještě složka
 \emph{registration}, kde je umístěn \emph{login.html}. HTML soubory
 zobrazují data v základní formě tabulek a nejsou graficky upravována
-%% ML: vysvetlete pojmy nebo pridejte alespon seznam zkratek
-pomocí CSS.
+pomocí CSS (Cascading Style Sheets).
 
 \begin{figure}[H] \centering
     \includegraphics[width=350pt]{./pictures/8-edit-detail-html.PNG}
@@ -101,7 +97,6 @@ aplikaci. Databáze poté bude obsahovat cestu k těmto souborům. K tomu
 byla vytvořena nová tabulka, který byla přes cizí klíč spojena s
 tabulkou se záznamy. Tabulka byla vytvořena v modelu, a poté pomocí
 migrací byl přenesena do databáze. Obsahuje tedy pole ID, což je
-%% ML: strukturu databaze nemate nikde vysvetlenu, chybi diagram, cokoliv...
 primární klíč tabulky, Post, který je cizím klíčem k tabulce Cvut a
 sloupec Image, do kterého se zaznamenává cesta k danému souboru.
 Pro zobrazení obrázků ještě musel být doinstalován přídavný modul Pillow.
@@ -114,8 +109,8 @@ Pro zobrazení obrázků ještě musel být doinstalován přídavný modul Pill
 
 
 V nastavení se dále určí kořenový adresář pro nahrávané soubory
-\textbf{MEDIA\_ROOT = os.path.join(BASE\_DIR, 'media')} a
-\textbf{MEDIA\_URL = '/media/'}.  A v poslední řadě se musí nastavit v
+MEDIA\_ROOT = os.path.join(BASE\_DIR, 'media') a
+MEDIA\_URL = '/media/'.  A v poslední řadě se musí nastavit v
 projektovém urls.py media soubory, které django samo neumí
 zobrazovat. Zde se provede import settings a static a k urlpatterns se
 připojí funkce static.
@@ -132,24 +127,26 @@ připojí funkce static.
 
 Pro řešení vizuální stránky webu jsou používány CSS soubory. Ve složce
 aplikace se tedy vytvoří adresář static a tomu v \emph{settings} se
-určí jeho nastavení pro statické soubory příkazy \textbf{STATIC\_URL =
-  '/static/'} a \textbf{STATICFILES\_DIRS = [os.path.join(BASE\_DIR,
-  'static')]}. Ve složce static je vytvořen adresář css, kde se
+určí jeho nastavení pro statické soubory příkazy STATIC\_URL =
+  '/static/' a STATICFILES\_DIRS = [os.path.join( BASE\_DIR,
+  'static')]. Ve složce static je vytvořen adresář css, kde se
 nachází základní CSS soubor base.css. Ten je ovšem prázdný a není
 připojen k žádnému HTML souboru.
+
+\begin{figure}[H] \centering
+    \includegraphics[width=110pt]{./pictures/7-nahled-adresare.PNG}
+    \caption[Náhled projektového adresáře]{Náhled projektového adresáře}
+	\label{fig:Náhled projektového adresáře}              
+\end{figure}
 
 \section{Nastavení jazyka a času}
 
 Dalším nastavením bylo použití našeho středoevropského času a českého
 jazyka. Velice jednoduché nastavení, kdy v \emph{settings} je po
 vytvoření aplikace nastaven jazyk na angličtinu a čas na UTC. Pro
-změnu se tedy přepíše \textbf{LANGUAGE\_CODE = 'en-us'} na
-\textbf{LANGUAGE\_CODE = 'cs'} a \textbf{TIME\_ZONE = 'UTC'} na
-\textbf{TIME\_ZONE = 'CET'}.
-
-\vspace{200px}
-
-\textcolor{red}{zadokrování aplikace} 
+změnu se tedy přepíše LANGUAGE\_CODE = 'en-us' na
+LANGUAGE\_CODE = 'cs' a TIME\_ZONE = 'UTC' na
+TIME\_ZONE = 'CET'.
 
 \newpage
 
@@ -158,48 +155,98 @@ změnu se tedy přepíše \textbf{LANGUAGE\_CODE = 'en-us'} na
 Po vytvoření základní uživatelské aplikace a úvahách o její funkci jsme dospěli k rozhodnutí, že nám bude stačit administrátorské rozhraní, ve kterém se budou provádět modifikace podle daných požadavků. Administrátorské prostředí se upravuje v adresáři aplikace v souboru \emph{admin.py} a lze se do něj dostat zadáním /admin za url adresu webové stránky. Začalo se tedy importem a zaregistrováním modelů do rozhraní a vytvořením jejich tříd. Pro model CvutImages se nejprve vytvořila třída PostImageAdmin, ve které je použit StackedInline model. Ten se používá pro vnořené třídy, tedy pokud je chceme zobrazit na jedné stránce společně s jinou třídou. V tomto případě tedy chceme zobrazit obrázky, které přísluší jednotlivým záznamům v třídě Cvut. @admin.register slouží k zobrazení třídy v administrátorském rozhraní, podmíněno vytvořením třídy tohoto modelu, ve které se poté provádí modifikace zobrazení. Ta je zde rozšířena o třídu PostImageAdmin. Dále je zaregistrován model CvutImages a vytvořena jeho třída pro jeho zobrazení.
 
 \begin{figure}[H] \centering
-    \includegraphics[width=250pt]{./pictures/12-admin-reg.PNG}
+    \includegraphics[width=230pt]{./pictures/12-admin-reg.PNG}
     \caption[Registrace modelů v admin.py]{Registrace modelů v admin.py}
 	\label{fig:Registrace modelů v admin.py}              
 \end{figure}
+
+\newpage
 
 
 \section{Per object permission}
 
 Dalším úkolem bylo zajištění per object permissions, tedy že uživatel nebude moci editovat celou tabulku, ale jen objekty, ke kterým bude mít udělená práva. Tuto možnost zajišťuje přídavný balíček django-guardian, který ovšem po jeho instalaci a implementaci nefungoval správně, a i po nastavení práv uživatel nemohl daný objekt editovat. Vymyslel se tedy systém za použití autentifikačního systému, kdy se do tabulky Cvut přidá nová proměnná managers, ve které se budou moci vybírat registrovaní uživatelé. Tato proměnná vytváří v databázi novou tabulku, která obsahuje ID, ID uživatele a ID objektu v tabulce. Ve vytvořených třídách v \emph{admin.py} je poté možnost pomocí funkcí has\_view\_permission(), has\_add\_permission(), has\_change\_permission() a has\_delete\_permission() modifikovat práva k tabulkám. Zde se tedy změnilo nastavení funkcí tak, aby tabulky mohl editovat superuživatel, uživatel, který to má udělená práva editovat celou tabulku nebo uživatel, který je přidaný v tabulce managers. 
 
+\begin{figure}[H] \centering
+    \includegraphics[width=330pt]{./pictures/11-managers-model.PNG}
+    \caption[Vytvoření managers v modelu aplikace]{Vytvoření managers v modelu aplikace}
+	\label{fig:Vytvoření managers v modelu aplikace}              
+\end{figure}
+
+\begin{figure}[H] \centering
+    \includegraphics[width=250pt]{./pictures/14-object-permissions.PNG}
+    \caption[Úprava práv k objektům]{Úprava práv k objektům}
+	\label{fig:Úprava práv k objektům}              
+\end{figure}
+
 
 \section{Nastavení zobrazení dat a jejich vyhledávání}
 
 Django disponuje řadou funkcí pro nastavení zobrazení dat v administrátorském prostředí. Nejprve se nastavovalo zobrazení dat na stránce tabulky. Zde se měli zobrazovat pouze základní informace o objektu jako je ID, fond, okres, obec. To se nastavuje pomocí proměnné \emph{list\_display} a \emph{list\_display\_links} slouží pro určení položek, díky kterým se po kliknutí dostanete na stránku obsahující informace o daném objektu. Na této stránce se zobrazují všechny určené položky definované v listu \emph{fields}. Dále byly nastaveny filtry pomocí \emph{list\_filer} a vyhledávání \emph{search\_fields}. 
 
+\begin{figure}[H] \centering
+    \includegraphics[width=400pt]{./pictures/21-zobrazeni-dat.PNG}
+    \caption[Zobrazení dat a vyhledávání]{Zobrazení dat a vyhledávání}
+	\label{fig:Zobrazení dat a vyhledávání}              
+\end{figure}
+
+\begin{figure}[H] \centering
+    \includegraphics[width=140pt]{./pictures/22-filtry.PNG}
+    \caption[Vyhledávání podle filtrů]{Vyhledávání podle filtrů}
+	\label{fig:Vyhledávání podle filtrů}              
+\end{figure}
 
 \section{Použití balíčku admin\_interface}
 
-Při hledání jednoduché a efektivní cesty pro úpravu administrátorského prostření byl vybrán balíček \emph{admin\_interface}. Umožňuje superuživateli po přihlášení do aplikace možnost editovat vizuální stránku aplikace jako změnu loga, nadpisu nebo barvy textu a pozadí. Instalace viz Django balíčky. Pro správnou funkci je nutno \textbf{INSTALLED\_APPS} v \emph{settings.py} rozšířit nejen o \emph{admin\_interface} ale také o \emph{colorfield}.
+Při hledání jednoduché a efektivní cesty pro úpravu administrátorského prostření byl vybrán balíček \emph{admin\_interface}. Umožňuje superuživateli po přihlášení do aplikace možnost editovat vizuální stránku aplikace jako změnu loga, nadpisu nebo barvy textu a pozadí. Instalace balíčku viz kapitola 2.1.4 Django - balíčky. Pro správnou funkci je nutno INSTALLED\_APPS v \emph{settings.py} rozšířit nejen o \emph{admin\_interface} ale také o \emph{colorfield}.
 
 
 
 \section{Tvorba databáze}
 
-Po vytvoření základních funkcionalit aplikace byla projektovému týmu zprostředkována databáze s daty, která se mají zobrazovat. Forma poskytnutých dat byla specifikována v kapitole textcolor{red}{(databáze …)} . Django nedisponuje jednoduchým řešením, jak redukovat duplicitní záznamy a přiřadit jednotlivé obrázky k jednomu záznamu. Úkolem projektového týmu tedy bylo vymyslet řešení, které by tento problém odstranilo. Jako nejlepší řešení se ukázalo z původní tabulky (base\_data) exportovat data se sloupci, které příslušely k jednotlivým objektům a vložit je do nové tabulky. Tímto vznikla samostatná tabulka všech objektů (cvut). Dále se z původní tabulky vybrali sloupce, kde byly umístěny informace o uložených fotografiích a byly opět vloženy do samostatné tabulky (base\_images). Tato tabulka byla pomocí cizího klíče propojena s tabulkou cvut, kde se fotografie odkazovali na jednotlivé objekty. Data se tedy dostaly do normalizované podoby podle třetího stupně.
+Po vytvoření základních funkcionalit aplikace byla projektovému týmu zprostředkována databáze s daty, která se mají zobrazovat. Forma poskytnutých dat byla specifikována v kapitole 3.3 centrální databáze. Django nedisponuje jednoduchým řešením, jak redukovat duplicitní záznamy a přiřadit jednotlivé obrázky k jednomu záznamu. Úkolem projektového týmu tedy bylo vymyslet řešení, které by tento problém odstranilo. Jako nejlepší řešení se ukázalo z původní tabulky (base\_data) exportovat data se sloupci, které příslušely k jednotlivým objektům a vložit je do nové tabulky. Tímto vznikla samostatná tabulka všech objektů (cvut). Dále se z původní tabulky vybrali sloupce, kde byly umístěny informace o uložených fotografiích a byly opět vloženy do samostatné tabulky (base\_images). Tato tabulka byla pomocí cizího klíče propojena s tabulkou cvut, kde se fotografie odkazovali na jednotlivé objekty. Data se tedy dostaly do normalizované podoby podle třetího stupně.
+
+\begin{figure}[H] \centering
+    \includegraphics[width=250pt]{./pictures/18-db-diagram.PNG}
+    \caption[Struktura normalizované databáze]{Struktura normalizované databáze}
+	\label{fig:Struktura noramlizované databáze}              
+\end{figure}
 
 
 \section{Zadokrování aplikace a databáze}
+%% je potřeba předělat a dodělat...
 
 Cílem projektového týmu bylo také vytvořit prostředí pro jednotný vývoj aplikace. Toto prostředí by mělo obsahovat jak aplikaci, tak databázi. Na začátku byl vytvořen hlavní adresář, do kterého se umístili složky aplikace a databáze. Ve složce aplikace byl vytvořen dockerfile, podle kterého se bude vytvářet jeho image. Je zde také umístěn soubor requirements, který přímo definuje verze přídavných balíčků. Součástí je dále skript, který upravuje databázi dle kapitoly (tvorba databáze). Ve složce databáze je opět obsažen soubor dockerfile, a requirements, kde je definována verze databáze MariaDB. Dále je zde synchronizační skript, který přebírá data z centrální databáze a vloží je do této, nově vytvořené databáze. Součástí je nejen přebírání dat z databáze ale také obrázků, které jsou uloženy na serveru. YAML file? Phpmyadmin?
 
+\newpage
 
 \section{Doplnění nové databáze}
 
-Tato databáze už obsahuje data z centrální databáze, které se pomocí skriptu upravily dle kapitoly (tvorba databáze). Po konzultaci projektového týmu se dospělo k závěru, že se k jednotlivým objektům budou přidávat nejen obrázkové soubory, ale také modely a jiné dokumenty. Vytvořila se tedy tabulka CvutFiles, která odpovídala tabulce z kapitoly (pridavani obrazku), ovšem s tím rozdílem že místo ImageFile byl použit FileField a byla doplněna o textové informace jako popis nebo typ dokumenty. Tabulka Cvut se opět rozšířila o sloupec managers viz kapitola (Per object permission)
+Tato databáze už obsahuje data z centrální databáze, které se pomocí skriptu upravily dle kapitoly (tvorba databáze). Po konzultaci projektového týmu se dospělo k závěru, že se k jednotlivým objektům budou přidávat nejen obrázkové soubory, ale také modely a jiné dokumenty. Vytvořila se tedy tabulka CvutFiles, která odpovídala tabulce z kapitoly (pridavani obrazku), ovšem s tím rozdílem že místo ImageFile byl použit FileField a byla doplněna o textové informace jako popis nebo typ dokumenty. Tabulka Cvut se opět rozšířila o sloupec managers viz kapitola (Per object permission).
+
+\begin{figure}[H] \centering
+    \includegraphics[width=350pt]{./pictures/23-db-diagram-2.PNG}
+    \caption[Struktura dopněné databáze]{Struktura dopněné databáze}
+	\label{fig:Struktura dopněné databáze}              
+\end{figure}
+
+\newpage
 
 \section{Úprava admin prostředí}
 
-S přidáním nové tabulky a nových proměnných bylo potřeba upravit zobrazení v administrátorském prostředí. Data z centrální databáze uživatelé nebudou moci přidávat editovat ani mazat, proto u tabulek Cvut a base\_images byly tyto možnosti úplně odstraněny a tabulka base\_images byla nastavena, aby se její fotografie, které jsou v ní uložené zobrazovali u jednotlivých objektů. U tabulky CvutFiles byla nastavena možnost přidávání, editace nebo mazání souborů superuživatelům a uživatelům s oprávněním k danému objektu. Bylo také upraveno zobrazení dat jak v hlavní nabídce, tak na stránce zobrazující informace o daném objektu.
+S přidáním nové tabulky a nových proměnných bylo potřeba upravit zobrazení v administrátorském prostředí. Data z centrální databáze uživatelé nebudou moci přidávat editovat ani mazat, proto u tabulek Cvut a base\_images byly tyto možnosti úplně odstraněny a tabulka base\_images byla nastavena, aby se její fotografie, které jsou v ní uložené zobrazovali u jednotlivých objektů. U tabulky CvutFiles byla nastavena možnost přidávání, editace nebo mazání souborů superuživatelům a uživatelům s oprávněním k danému objektu. Bylo také upraveno zobrazení dat jak v hlavní nabídce, tak na stránce zobrazující informace o daném objektu. U obrázků také byl vytvořen jejich náhled v administrátorském prostředí s možností jejich zvětšení.
 
+\begin{figure}[H] \centering
+    \includegraphics[width=220pt]{./pictures/24-nahled-obrazku.PNG}
+    \caption[Zobrazení fotografié v administrátorském prostředí]{Zobrazení fotografié v administrátorském prostředí}
+	\label{fig:Zobrazení fotografié v administrátorském prostředí}              
+\end{figure}
 
-
+\begin{figure}[H] \centering
+    \includegraphics[width=450pt]{./pictures/25-vytvoreni-nahledu.PNG}
+    \caption[Vytvoření náhledu v admin.py]{Vytvoření náhledu v admin.py}
+	\label{fig:Vytvoření náhledu v admin.py}              
+\end{figure}
 
 
 

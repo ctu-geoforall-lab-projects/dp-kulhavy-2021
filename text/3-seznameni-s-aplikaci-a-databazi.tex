@@ -1,5 +1,5 @@
-\chapter{Seznámení s aplikací}
-\label{3-seznameni-s-aplikaci}
+\chapter{Seznámení s aplikací a databází}
+\label{3-seznameni-s-aplikaci-a-databazi}
 
 \section{Navázání na projekt FGIS}
 
@@ -10,8 +10,8 @@ přihlášení uživatelé mohli zobrazovat, vytvářet, editovat a mazat zázna
 z databáze. Databáze pro tento projekt byla pouze cvičná a obsahovala
 pouze několik tabulek s textovými poli. Projekt ovšem nebyl zcela
 dokončen, protože se nepovedlo vytvořit všechny funkce tak, aby
-správně fungovali. Data do databáze šla přidávat, dali se zobrazovat a
-také mazat, ale při editaci se po uložení nepřepsala aktuální data v
+správně fungovali. Data do databáze šla přidávat, zobrazovat je a 
+mazat, ale při editaci se po uložení nepřepsala aktuální data v
 databázi.
 
 \begin{figure}[H] \centering
@@ -19,18 +19,17 @@ databázi.
     \caption[Náhled aplikace vytvořené v projektu FGIS]{Náhled aplikace vytvořené v projektu FGIS}
 	\label{fig:Náhled aplikace}              
 \end{figure}
-
- \newpage
  
- \section{Použití zkušební databáze}
+ \section{Zkušební databáze}
  
 Na začátku projektu byla používána pouze zkušební databáze, jejíž použití 
 bylo z důvodu neznalosti přesné struktury finální databáze. Zkušební databáze 
-byla použita na začátku projektu pro inicializaci aplikace, a vytvoření základních 
-funkcionalit. Databáze obsahovala pouze jednu tabulku s textovými daty.
+sloužila na začátku projektu pro inicializaci aplikace, a vytvoření základních 
+funkcionalit. Databáze obsahovala pouze tabulku s textovými daty.
 
+ \newpage
 
-\section{Databáze fondu Národního muzea}
+\section{Centrální databáze}
 
 Databáze fondů Národního muzea obsahuje objekty, které se budou ve 
 vyvíjené aplikaci zobrazovat a budou rozšířena o další data. Všechna data 
@@ -41,6 +40,10 @@ vytváří nový databázový objekt. Zde dochází k duplikování velké čás
 kdy se sloupce s informacemi o objektu kopírují a mění se pouze část s 
 obrázky a jejich metadaty. Databáze je tedy v nenormalizované formě.
 
-\textcolor{red}{přiložit obrázky souborů?}
+\begin{figure}[H] \centering
+    \includegraphics[width=420pt]{./pictures/5-ukazka-basedata.PNG}
+    \caption[Náhled dat z centrální databáze s viditelnými duplicitami]{Náhled dat centrální z databáze s viditelnými duplicitami}
+	\label{fig:Náhled dat z centrální databáze s viditelnými duplicitami}              
+\end{figure}
 
 

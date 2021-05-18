@@ -219,7 +219,7 @@ rozšíření. Ty jsou zpravidla uloženy na stránce \textit{github.com}, kde
 je detailně popsána jejich dokumentace. Jejich implementace je opravdu
 jednoduchá, pomocí pip se nainstaluje příslušný balíček (např. {\tt pip
 install django-rest)}. Dále se v projektu v souboru settings.py přidá
-rozšíření do \textbf{INSTALLED\_APPS} a provede se migrace pro
+rozšíření do INSTALLED\_APPS a provede se migrace pro
 vytvoření tabulek v databázi.
 
 \subsection{Django - administrátorské rozhraní}
@@ -251,22 +251,19 @@ Docker je open source software používaný pro jednotný vývoj aplikací,
 které běží v izolovaných kontejnerech. Je primárně využíván na
 operačním systému Linux, ale je možné ho zprovoznit také na Windows
 nebo Mac OS X. Výhodou je také, že může běžet jak lokálně, tak na
-%% ML: zadokrovani maximalne v uvozovkach a vysvetlit
-cloudovém uložišti. Jeho užití spočívá v zadokrování aplikace a všech
-jejich částí. Díky tomu je poté zajištěn bezproblémový chod na
-%% ML: anglikanismus, navic nevysvetleny
-jakémkoliv jiném zařízení se stejným operačním systémem. Image pro
-Linux mohou běžet pouze na systémech s Linux a stejně tak je to pro
-%% ML: piste docker s velkym pismenem
-Windows. Aplikace spuštěná v dockeru je izolovaná, a nezasahuje do
+cloudovém uložišti. Jeho užití spočívá ve vytvoření obrazů (image), ze 
+kterých se následně v kontejnerech spustí aplikace ve stejné formě, 
+v jaké byl vytvořen její obraz. Díky tomu je poté zajištěn bezproblémový 
+chod na jakémkoliv jiném zařízení se stejným operačním systémem. Image 
+pro Linux může běžet pouze na systémech s Linux a stejně tak je to pro
+Windows. Aplikace spuštěná v Dockeru je izolovaná, a nezasahuje do
 ostatních aplikací. Je zde také snadná možnost testovat nové verze
 knihoven a aplikací.
 
-Při zadokrování aplikace se nejprve vytvoří image, která obsahuje
-%% ML: u "imagi" uz nevim, co napsat... 
-všechny aplikace a nastavení. Z těchto imagí se poté vytvoří
-kontejner, který obsahuje také svou vlastní vrstvu, kde jsou uloženy
-všechny změny, které uživatel provedl.
+Při použití Dockeru je nutné nejprve vytvoří obraz, která obsahuje 
+všechny aplikace a jejich nastavení potřebné pro bezproblémový chod. 
+Z tohoto obrazu se poté vytvoří kontejner, který obsahuje také svou 
+vlastní vrstvu, kde jsou uloženy všechny změny, které uživatel provedl.
 
 
 
@@ -309,8 +306,13 @@ nejrůznějších formátů nebo správa uživatelů. K přístupu do rozhraní
 phpMyAdmin je zapotřebí webový prohlížeč s podporou cookies a
 JavaScriptu.
 
+\section{Objektově relační mapování}
 
-
+Objektově relační mapování (ORM) zajišťuje konverzi dat mezi relační databází a objektově orientovaným programovacím jazykem. Umožňuje konverzi SQL tabulek do tříd a usnadňuje tak práci s psaním SQL dotazů. Pro tuto konverzi se často používají externí programy, které umožňují tyto konverze mezi řadou databázových systémů. Jedním z nich je například SQLAlchemy, které umožňuje tuto konverzi pro programovací jazyk Python a databáze SQLite, Postresql, MySQL a další. Některé aplikace včetně Django si ovšem tuto konverzi zprostředkovávají sami za pomoci vlastního ORM. 
 
 \textbf{}
 \textit{}
+
+
+
+
