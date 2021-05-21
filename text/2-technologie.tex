@@ -27,12 +27,12 @@ verze Django 2.0 na konci roku 2017. Ta zajišťovala plnou podporu pro
 Python 3 a nadála už není možné pracovat s verzí Python 2. Aktuální
 verze Djanga je 3.1, s tím že se plánuje v blízké době vydat verzi 3.2
 po které by měl následovat další velká aktualizace v podobě Djanga 4.0,
-která je plánována na začátek roku 2022.
+která je plánována na začátek roku 2022. \cite{django}
 
 \newpage
 
 
-\subsection{Django - Instalace a inicializace projektu}
+\subsection{Django - instalace a inicializace projektu}
 
 Django je framework pracující v jazyce Python, pro jehož aktuální
 verzi 3.1 je potřeba mít nainstalován verzi Python 3.6 nebo
@@ -41,7 +41,7 @@ install django}, čímž by se měla nainstalovat nejaktuálnější verze
 Djanga. Po instalaci lze pro zobrazení aktuální verze použít příkaz
 django-admin --version. Po instalaci se opět pomocí příkazové řádky
 provede vytvoření projektu v aktuální složce příkazem {\tt django-admin
-startproject [název projektu]}. Tímto se vytvoří nový adresář který
+startproject [název projektu]}. \cite{django-init} Tímto se vytvoří nový adresář který
 vypadá následovně:
 
 \begin{itemize}
@@ -89,7 +89,7 @@ aplikací.
 \newpage
 
 Pomocí nástroje manage.py se v Djangu spouští řada důležitých
-příkazů. Zde je výčet těch nejdůležitějších a jejich popis.
+příkazů. Zde je výčet těch nejdůležitějších a jejich popis. \cite{django-admin-manage}
 
 \begin{itemize}
 \item {\tt python manage.py runserver} - tento příkaz spouští
@@ -121,12 +121,12 @@ příkazů. Zde je výčet těch nejdůležitějších a jejich popis.
 
 \newpage
 
-\subsection{Django - Tvorba aplikace}
+\subsection{Django - tvorba aplikace}
 
 Po založení projektu je potřeba vytvořit aplikaci. Počet použitých
 aplikací v projektu není omezen a jejích výhodou je, že je lze
 opětovně použít v dalších projektech. Aplikace se vytvoří příkazem{\tt
-python manage.py startapp [nazev aplikace]}. Schéma je následující:
+python manage.py startapp [nazev aplikace]}. \cite{django-init} Schéma je následující:
 
 \begin{itemize}
 	\item \lbrack Název aplikace\rbrack /
@@ -170,7 +170,7 @@ soubory, vytvořené při spuštění příkazu \textit{makemigrations}
 
 \newpage
 
-\subsection{Django – práce s databází}
+\subsection{Django - práce s databází}
 
 
 Další z věcí, kterou Django nabízí je jednoduchá a rychlá
@@ -185,7 +185,7 @@ takovou tedy vůbec nemusíme pracovat. Při připojování, k již
 existující databázi lze příkazem inspectdb vygeneruje model stávající
 databáze. Django oficiálně podporuje databáze PostgreSQL, MariaDB,
 MySQL, Oracle a SQLite. Jsou zde ovšem i komunitně vytvořené balíčky
-pro podporu NoSQL databáze MongoDB.
+pro podporu NoSQL databáze MongoDB. \cite{django}
 
 Model obsahuje všechny informace o tabulkách a jejich
 sloupcích. Jednotlivé tabulky jsou v modelu vytvořeny jako třídy class
@@ -207,7 +207,7 @@ dodatečné informace o tabulce.
 
 \newpage
 
-\subsection{Django - balíčky}
+\subsection{Django - přídavné balíčky}
 
 Packages, neboli balíčky jsou nástroje pro usnadnění práce s
 djangem. Tyto balíčky mají mnoho funkcí, a to od změny vzhledu
@@ -220,7 +220,7 @@ je detailně popsána jejich dokumentace. Jejich implementace je opravdu
 jednoduchá, pomocí pip se nainstaluje příslušný balíček (např. {\tt pip
 install django-rest)}. Dále se v projektu v souboru settings.py přidá
 rozšíření do INSTALLED\_APPS a provede se migrace pro
-vytvoření tabulek v databázi.
+vytvoření tabulek v databázi. \cite{django-packages}
 
 \subsection{Django - administrátorské rozhraní}
 
@@ -241,7 +241,7 @@ zobrazení v administrátorském rozhraní. Pokud je potřeba tabulky
 modifikovat, například zobrazit jen některá data, je třeba vytvořit ke
 každému modelu třídu, která se následně upravuje. Pro tento případ
 Django disponuje velkou škálou funkcí pro jednoduchou úpravu zobrazení
-dat.
+dat. \cite{django-admin}
 
 \newpage
 
@@ -264,6 +264,7 @@ Při použití Dockeru je nutné nejprve vytvoří obraz, která obsahuje
 všechny aplikace a jejich nastavení potřebné pro bezproblémový chod. 
 Z tohoto obrazu se poté vytvoří kontejner, který obsahuje také svou 
 vlastní vrstvu, kde jsou uloženy všechny změny, které uživatel provedl.
+\cite{docker}
 
 
 
@@ -277,7 +278,7 @@ projekt a jeho kompletní historii provedených změn. Každý člen týmu je
 tedy rovněž i zálohou. Při použití Gitu se využívají webové služby
 jako například GitHub nebo GitLab, kde jsou repozitáře
 zálohovány. Zároveň tu je mnoho užitečných nastavení jako veřejné nebo
-soukromé repozitáře, nastavení práv uživatelů a spousta dalších.
+soukromé repozitáře, nastavení práv uživatelů a spousta dalších. \cite{git}
 
 \newpage
 
@@ -293,22 +294,22 @@ podporuje řadu operačních systémů včetně těch nejrozšířenějších ja
 Windows, Linux a MacOS. Vzhledem k tomu, že se vycházelo z MySQL, má
 MariaDB stejnou strukturu a indexování. Oproti MySQL má ovšem daleko
 rychlejší vývoj, což je způsobeno i tím, že je celý projekt open
-source.
+source. \cite{mariadb}
 
 \section{phpMyAdmin}
 
 Je to open source nástroj pro správu MySQL a MariaDB databáze pomocí
-webového rozhraní. Je napsaný v jazyce PHP a je k dispozici v 80
+webového rozhraní. Je napsaný v jazyce PHP a je k dispozici ve více jak 70
 jazycích včetně češtiny. Toto rozhraní umožňuje provádět SQL příkazy
 jako jsou CREATE, DROP, ALTER table a spravovat obsah tabulek. Dále je
 zde možno například import dat z CSV souborů, export dat do
 nejrůznějších formátů nebo správa uživatelů. K přístupu do rozhraní
 phpMyAdmin je zapotřebí webový prohlížeč s podporou cookies a
-JavaScriptu.
+JavaScriptu. \cite{phpmyadmin} \cite{phpmyadmin-2}
 
 \section{Objektově relační mapování}
 
-Objektově relační mapování (ORM) zajišťuje konverzi dat mezi relační databází a objektově orientovaným programovacím jazykem. Umožňuje konverzi SQL tabulek do tříd a usnadňuje tak práci s psaním SQL dotazů. Pro tuto konverzi se často používají externí programy, které umožňují tyto konverze mezi řadou databázových systémů. Jedním z nich je například SQLAlchemy, které umožňuje tuto konverzi pro programovací jazyk Python a databáze SQLite, Postresql, MySQL a další. Některé aplikace včetně Django si ovšem tuto konverzi zprostředkovávají sami za pomoci vlastního ORM. 
+Objektově relační mapování (ORM) zajišťuje konverzi dat mezi relační databází a objektově orientovaným programovacím jazykem. Umožňuje konverzi SQL tabulek do tříd a usnadňuje tak práci s psaním SQL dotazů. Pro tuto konverzi se často používají externí programy, které umožňují tyto konverze mezi řadou databázových systémů. Jedním z nich je například SQLAlchemy, které umožňuje tuto konverzi pro programovací jazyk Python a relační databáze SQLite, Postresql, MySQL a další. Některé aplikace včetně Django si ovšem tuto konverzi zprostředkovávají sami za pomoci vlastního ORM. \cite{orm} \cite{sqlalchemy}
 
 \textbf{}
 \textit{}

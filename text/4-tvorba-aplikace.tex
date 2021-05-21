@@ -26,7 +26,7 @@ vytvářely tzv. \emph{issues}, kde se plánovaly nadcházející úkoly při
 tvorbě aplikace.
 
 \section{Tvorba aplikace v uživatelském prostředí}
-
+Při vytváření uživatelské aplikace bylo postupováno dle příkladu v \cite{django-for-beginners}.
 Prvním větším úkolem bylo vytvořit aplikace, která bude zobrazovat
 data, a po přihlášení je bude moci uživatel také přidávat, mazat a
 editovat. Nejprve se tady do adresáře aplikace přidala soubor  \emph{urls.py},
@@ -153,7 +153,8 @@ TIME\_ZONE = 'CET'.
 
 \section{Administrátorské prostředí}
 
-Po vytvoření základní uživatelské aplikace a úvahách o její funkci jsme dospěli k rozhodnutí, že nám bude stačit administrátorské rozhraní, ve kterém se budou provádět modifikace podle daných požadavků. Administrátorské prostředí se upravuje v adresáři aplikace v souboru \emph{admin.py} a lze se do něj dostat zadáním /admin za url adresu webové stránky. Začalo se tedy importem a zaregistrováním modelů do rozhraní a vytvořením jejich tříd. Pro model CvutImages se nejprve vytvořila třída PostImageAdmin, ve které je použit StackedInline model. Ten se používá pro vnořené třídy, tedy pokud je chceme zobrazit na jedné stránce společně s jinou třídou. V tomto případě tedy chceme zobrazit obrázky, které přísluší jednotlivým záznamům v třídě Cvut. @admin.register slouží k zobrazení třídy v administrátorském rozhraní, podmíněno vytvořením třídy tohoto modelu, ve které se poté provádí modifikace zobrazení. Ta je zde rozšířena o třídu PostImageAdmin. Dále je zaregistrován model CvutImages a vytvořena jeho třída pro jeho zobrazení.
+Po vytvoření základní uživatelské aplikace a úvahách o její funkci jsme dospěli k rozhodnutí, že nám bude stačit administrátorské rozhraní, ve kterém se budou provádět modifikace podle daných požadavků.
+Při jeho tvorbě a modifikaci byla jako podklad použita oficiální dokumentace Django (docs.djangoproject.com) a \cite{django-admin-book} Administrátorské prostředí se upravuje v adresáři aplikace v souboru \emph{admin.py} a lze se do něj dostat zadáním /admin za url adresu webové stránky. Začalo se tedy importem a zaregistrováním modelů do rozhraní a vytvořením jejich tříd. Pro model CvutImages se nejprve vytvořila třída PostImageAdmin, ve které je použit StackedInline model. Ten se používá pro vnořené třídy, tedy pokud je chceme zobrazit na jedné stránce společně s jinou třídou. V tomto případě tedy chceme zobrazit obrázky, které přísluší jednotlivým záznamům v třídě Cvut. @admin.register slouží k zobrazení třídy v administrátorském rozhraní, podmíněno vytvořením třídy tohoto modelu, ve které se poté provádí modifikace zobrazení. Ta je zde rozšířena o třídu PostImageAdmin. Dále je zaregistrován model CvutImages a vytvořena jeho třída pro jeho zobrazení.
 
 \begin{figure}[H] \centering
     \includegraphics[width=230pt]{./pictures/12-admin-reg.PNG}
@@ -197,6 +198,8 @@ Django disponuje řadou funkcí pro nastavení zobrazení dat v administrátorsk
 	\label{fig:Vyhledávání podle filtrů}              
 \end{figure}
 
+\newpage
+
 \section{Použití balíčku admin\_interface}
 
 Při hledání jednoduché a efektivní cesty pro úpravu administrátorského prostření byl vybrán balíček \emph{admin\_interface}. Umožňuje superuživateli po přihlášení do aplikace možnost editovat vizuální stránku aplikace jako změnu loga, nadpisu nebo barvy textu a pozadí. Instalace balíčku viz kapitola 2.1.4 Django - balíčky. Pro správnou funkci je nutno INSTALLED\_APPS v \emph{settings.py} rozšířit nejen o \emph{admin\_interface} ale také o \emph{colorfield}.
@@ -216,13 +219,24 @@ Po vytvoření základních funkcionalit aplikace byla projektovému týmu zpros
 
 \section{Automatizace nasazení aplikace a databáze}
 
-Úkolem projekčního týmu bylo vytvořit prostředí pro jednotný vývoj aplikace. Do tohoto prostředí bylo ovšem potřeba zahrnut jak aplikaci, tak databázi, ke které se aplikace připojuje. Základním souborem pro tvorbu obrazů je docker-compose.yaml. Ten definuje základní nastavení pro vytváření tří obrazů, ze kterých se budou spouštět jednotlivé kontejnery. Prvním obrazem je db, ze kterého vzniká kontejner, ve kterém běží vytvořená databáze MariaDB. Druhým obrazem se jmenuje phpmyadmin, který se nesestavuje lokálně, ale je stažen z hub.docker.com. Třetí obraz je nazván editapp a vytváří kontejner, ve kterém běží vyvíjená webová aplikace. U každého obrazu je zde potom definováno, z jakých souborů se obraz vytvoří, název kontejneru, port, na kterém daný kontejner poběží a další nastavení, potřebná pro zajištění správného chodu kontejnerů. Vytvoření obrazu db je definováno z adresáře mariadb, kde v souboru Dockerfile je přesně popsáno jeho sestavení. Jako první je zde definováno sestavení databáze mariadb. Dále je zde doinstalován soubor requirements.txt, který obsahuje potřebná rozšíření. Dalším souborem init.py se vytváří základní tabulka base\_data, která se striktně vytváří dle aktuální verze centrální databáze a neimituje její změny. S touto tabulkou se pomocí skriptu sync-db.py synchronizují data z centrální databáze, a nakonec se pomocí premissions.sql vytvoří superuživatel, a nastaví se práva v databázi. Vytvoření obrazu s webovou aplikace je nastaveno na adresář ediatapp, a je definován pomocí Dockerfile. Definice image je nastavena na Python 3.9 ve kterém také běží Django. Dále se opět musí doinstalovat potřebná rozšíření, zapsaná v requirements.txt a spustí se skript startup.sh. Tímto skriptem se databáze doplňuje o další tabulky a jejich objekty. Nejprve se zde provede inspectdb, kterým se vytvoří models.py s tabulkou base\_data. Vytvořený model je rozšířen o tabulky Cvut, CvutFiles a base\_images a migrací je převeden do databáze. Toto je z důvodů autentifikačního systému, kdy managers, které jsou v modelu zapsány v tabulce Cvut vytváří v databázi vlastní tabulku. Pokud bychom vytvořili tabulku managers v databázi a pomocí inspectdb by se převedla do modelu, vytvořila by se tam jako samostatná tabulka a nesplňovala by požadovanou funkcionalitu. Vytvořené tabulky cvut a base\_images se pomocí sql příkazů v cvut.sql doplní o data z tabulky base\_data. Obrázky, ne které se odkazují jsou momentálně předpřipravené a uložené na serveru geo102.fsv.cvut.cz, odkud se stáhnou a uloží do složky media. Nakonec se aplikace spustí příkazem runserver. 
+
+Úkolem projekčního týmu bylo vytvořit prostředí pro jednotný vývoj aplikace. Do tohoto prostředí bylo ovšem potřeba zahrnut jak aplikaci, tak databázi, ke které se aplikace připojuje. Základním souborem pro tvorbu obrazů je \emph{docker-compose.yaml}. Ten definuje základní nastavení pro vytváření tří obrazů, ze kterých se budou spouštět jednotlivé kontejnery. Prvním obrazem je db, ze kterého vzniká kontejner, ve kterém běží vytvořená databáze MariaDB. Druhým obrazem se jmenuje phpmyadmin, který se nesestavuje lokálně, ale je stažen z hub.docker.com. Třetí obraz je nazván editapp a vytváří kontejner, ve kterém běží vyvíjená webová aplikace. U každého obrazu je zde potom definováno, z jakých souborů se obraz vytvoří, název kontejneru, port, na kterém daný kontejner poběží a další nastavení, potřebná pro zajištění správného chodu kontejnerů. 
+
+Vytvoření obrazu db je definováno z adresáře \emph{mariadb}, kde v souboru \emph{Dockerfile} je přesně popsáno jeho sestavení. Jako první je zde definováno sestavení databáze mariadb. Dále je zde doinstalován soubor \emph{requirements.txt}, který obsahuje potřebná rozšíření. Dalším souborem \emph{init.py} se vytváří základní tabulka base\_data, která se striktně vytváří dle aktuální verze centrální databáze a neimituje její změny. S touto tabulkou se pomocí skriptu \emph{sync-db.py} synchronizují data z centrální databáze, a nakonec se pomocí \emph{premissions.sql} vytvoří superuživatel, a nastaví se práva v databázi. 
+
+Vytvoření obrazu s webovou aplikace je nastaveno na adresář \emph{ediatapp}, a je definován pomocí \emph{Dockerfile}. Definice image je nastavena na Python 3.9 ve kterém také běží Django. Dále se opět musí doinstalovat potřebná rozšíření, zapsaná v \emph{requirements.txt} a spustí se skript \emph{startup.sh}. Tímto skriptem se databáze doplňuje o další tabulky a jejich objekty. Nejprve se zde provede inspectdb, kterým se vytvoří \emph{models.py} s tabulkou base\_data. Vytvořený model je rozšířen o tabulky Cvut, CvutFiles a base\_images a migrací je převeden do databáze. Toto je z důvodů autentifikačního systému, kdy managers, které jsou v modelu zapsány v tabulce Cvut vytváří v databázi vlastní tabulku. Pokud bychom vytvořili tabulku managers v databázi a pomocí inspectdb by se převedla do modelu, vytvořila by se tam jako samostatná tabulka a nesplňovala by požadovanou funkcionalitu. Vytvořené tabulky cvut a base\_images se pomocí sql příkazů v \emph{cvut.sql} doplní o data z tabulky base\_data. Obrázky, ne které se odkazují jsou momentálně předpřipravené a uložené na serveru geo102.fsv.cvut.cz, odkud se stáhnou a uloží do složky \emph{media}. Nakonec se aplikace spustí příkazem runserver. 
+
+\begin{figure}[H] \centering
+    \includegraphics[width=400pt]{./pictures/diagram-docker.PNG}
+    \caption[Postup tvorby aplikace a databáza]{Postup tvorby aplikace a databáza}
+	\label{fig:Postup tvorby aplikace a databáza}              
+\end{figure}
 
 \newpage
 
 \section{Doplnění nové databáze}
 
-Tato databáze už obsahuje data z centrální databáze, které se pomocí skriptu upravily dle kapitoly (tvorba databáze). Po konzultaci projektového týmu se dospělo k závěru, že se k jednotlivým objektům budou přidávat nejen obrázkové soubory, ale také modely a jiné dokumenty. Vytvořila se tedy tabulka CvutFiles, která odpovídala tabulce z kapitoly (pridavani obrazku), ovšem s tím rozdílem že místo ImageFile byl použit FileField a byla doplněna o textové informace jako popis nebo typ dokumenty. Tabulka Cvut se opět rozšířila o sloupec managers viz kapitola (Per object permission).
+Tato databáze už obsahuje data z centrální databáze, které se pomocí skriptu upravily dle kapitoly (Tvorba databáze). Po konzultaci projektového týmu se dospělo k závěru, že se k jednotlivým objektům budou přidávat nejen obrázkové soubory, ale také modely a jiné dokumenty. Vytvořila se tedy tabulka CvutFiles, která odpovídala tabulce z kapitoly (pridavani obrazku), ovšem s tím rozdílem že místo ImageFile byl použit FileField a byla doplněna o textové informace jako popis nebo typ dokumenty. Tabulka Cvut se opět rozšířila o sloupec managers viz kapitola (Per object permission).
 
 \begin{figure}[H] \centering
     \includegraphics[width=400pt]{./pictures/23-db-diagram-2.PNG}

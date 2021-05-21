@@ -5,7 +5,7 @@
 
 Při volbě, jakou metodu pro tvorbu aplikace použít, se nabízelo několik 
 možností jak ji vytvořit. Aplikace by mohla být vytvořena za použit 
-skriptovací jazyka PHP, Javascriptu nebo například python frameworku 
+skriptovací jazyka PHP, Javascriptu nebo například Python frameworku 
 pro tvorbu webových aplikací. 
 
 Ze zadání projektového týmu ovšem vyplynulo, že by aplikace měla být 
@@ -23,7 +23,7 @@ vybíralo ze dvou frameworků, a to Flask a Django.
 
 \begin{figure}[H] \centering
     \includegraphics[width=240pt]{./pictures/1-django-vs-flask.jpeg}
-    \caption[Flask vs Django]{Flask vs Django \cite{}}
+    \caption[Flask vs Django]{Flask vs Django \cite{django-vs-flask}}
 	\label{fig:Flask vs Django}                                
 \end{figure}
 
@@ -37,15 +37,15 @@ druhé místo na GitHubu z webových frameworků, a díky tomu disponuje
 spoustou materiálů a tutoriálů. Avšak velká nevýhoda flasku pro vývoj
 naší aplikace je, že nedisponuje datovými modely. Pokud bychom v průběhu
 vývoje chtěli přidat sloupec do naší databáze, musíme to udělat ručně
-v databázi a poté ho přidat do třídy ve webové aplikaci.
+v databázi a poté ho přidat do třídy ve webové aplikaci. \cite{flask}
 
-Django je nejpoužívanějším open source frameworkem disponuje objektově
-relačním mapováním. Jeho skvělou vlastností je tedy možnost generovat
+Django je nejpoužívanějším open source frameworkem. Jednou z jeho funkcí je že 
+isponuje objektově relačním mapováním. Jeho vlastností je tedy možnost generovat
 model z databáze, který se zde může upravovat a poté jednoduchými
-příkazy promítnout úpravy do databáze. Další výhodou je implementované
+příkazy promítnout úpravy zpět do databáze. Další výhodou je implementované
 administrátorské rozhraní a možnost doinstalováním přídavných balíčků,
 poskytující jak grafické úpravy, tak přidané funkce. Jedním z nich je
-i balíček django-guardian zajišťující podporu per object permissions.
+i balíček django-guardian zajišťující podporu per object permissions. \cite{django}
 
 
 Z těchto frameworků byl nakonec vybrán pro tvorbu aplikace framework
@@ -72,7 +72,7 @@ mohl nastat je problém v komunikaci s frameworkem pro vývoj webových
 aplikací. Ty v zásadě nemají problém komunikovat s jakýmkoliv typem
 relační databáze, ovšem často nemají engine pro databáze typu
 NoSQL. Zvolili jsme tedy relační databázi a to MariaDB z důvodu poskytnutí 
-dat právě z tohoto databázového systému.
+dat právě z tohoto databázového systému. \cite{django} \cite{mariadb}
 
 \section{Automatizace nasazení aplikace}
 
@@ -96,7 +96,9 @@ uživatele. Dalším hlavním rozdílem je větší propracovanost Dockeru,
 které umožňuje více nastavení kontejnerů a rozdělení aplikace do více
 kontejnerů. Oproti LXC může být Docker použit i na
 jiném operačním systému než je linux. Z těchto důvodů byl pro
-kontejnerizaci zvolen Docker.
+kontejnerizaci zvolen Docker. \cite{deployment}
+
+\newpage
 
 \section{Normalizace databáze}
 
@@ -119,7 +121,7 @@ Ve čtvrtém stupni by záznamy neměly obsahovat více nezávislých hodnot jed
 Takovéto hodnoty by opět mely být převedeny do samostatné tabulky a spojeny cizím klíčem.
 
 Pátý stupeň platí, pokud není možné tabulku dále dělit bez ztráty dat. Po 
-rozdělení by došlo ke ztrátě vztahů, které mezi daty platí.
+rozdělení by došlo ke ztrátě vztahů, které mezi daty platí. \cite{normalizace}
 
 
 
