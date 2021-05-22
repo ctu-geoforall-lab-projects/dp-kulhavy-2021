@@ -1,10 +1,39 @@
 \chapter{Závěr}
 \label{5-zaver}
 
-\section{Závěr}
+% \section{Závěr}
 
-Cílem práce bylo vytvořit webovou aplikaci pro projekt Viskalia. Aplikace měla být vytvořena tak, aby uměla zobrazovat, vytvářet, editovat a mazat data v databázi. Tento základní předpoklad byl splněn, kdy aplikace splňuje všechny tyto funkcionality i s náležitými úpravami.
+Cílem práce bylo vytvořit webovou aplikaci pro projekt
+Viskalia. Aplikace měla být vytvořena tak, aby uměla zobrazovat,
+vytvářet, editovat a mazat data v databázi. Tento základní předpoklad
+byl splněn, kdy aplikace splňuje všechny tyto funkcionality i s
+náležitými úpravami.
 
-Co se týče aplikace, je zde několik možností na zlepšení, popřípadě dodělání nedostatků aplikace. Jedním z nedostatků je pracná tvorba vytváření uživatelů a nastavování jejich práv k objektům, kdy se každému uživateli musí samostatně nastavit práva ke každému objektu, pro který by měl mít právo editace. Toto by šlo vyřešit jednoduchým skriptem pro hromadný zápis práv do tabulky managers. Dalším nedostatkem je použití balíčku pro editaci administrátorského prostředí admin\_interface. Aktuální problém chybějící šablona, která by se při sestavování kontejnerů vložila do databáze. Při opětovném vytvoření se tedy vždy restartuje nastavení, které superuživatel vytvoří. Možným řešením je tuto šablonu vytvořit a přidat jí při spouštění do tabulky admin\_interface, nebo toto rozšíření odstranit a upravit základní html šablonu, kterou poskytuje Django. Posledním námětem je dokončení uživatelské aplikace, aby byla uživatelsky přívětivější, ať už se jedná pouze o zobrazování dat, nebo dodělání funkcionalit podobných administrátorskému rozhraní.
+Co se týče aplikace, je zde několik možností na zlepšení, popřípadě
+dodělání nedostatků aplikace. Jedním z nedostatků je pracná tvorba
+vytváření uživatelů a nastavování jejich práv k objektům, kdy se
+každému uživateli musí samostatně nastavit práva ke každému objektu,
+pro který by měl mít právo editace. Toto by šlo vyřešit jednoduchým
+skriptem pro hromadný zápis práv do tabulky managers. Dalším
+nedostatkem je použití balíčku pro editaci administrátorského
+prostředí admin\_interface. Aktuální problém chybějící šablona, která
+by se při sestavování kontejnerů vložila do databáze. Při opětovném
+vytvoření se tedy vždy restartuje nastavení, které superuživatel
+vytvoří. Možným řešením je tuto šablonu vytvořit a přidat jí při
+spouštění do tabulky admin\_interface, nebo toto rozšíření odstranit a
+upravit základní html šablonu, kterou poskytuje Django. Posledním
+námětem je dokončení uživatelské aplikace, aby byla uživatelsky
+přívětivější, ať už se jedná pouze o zobrazování dat, nebo dodělání
+funkcionalit podobných administrátorskému rozhraní.
 
-Jedním z úkolů projektového týmu Viskalia bylo také automatizovat nasazení aplikace a databáze. Tento problém byl také vyřešen, ovšem obsahuje několik nedostatků, které by bylo potřeba opravit. Prvním nedostatkem je synchronizace struktury databáze a vložených dat, kdy při tvorbě tabulky, která přebírá data z centrální databáze není proveden sken této databáze, ale je přímo vytvořena tabulka, která odpovídá její aktuální verzi. Pokud se tedy provedou změny v této databázi, nepromítnou se do námi vytvořená tabulky. Dalším problémem je stahování obrázků z databázového serveru. Obrázky nejsou stahovány z databázového serveru, ale je stahován pouze předpřipravený soubor s několika vybranými obrázky.
+Jedním z úkolů projektového týmu Viskalia bylo také automatizovat
+nasazení aplikace a databáze. Tento problém byl také vyřešen, ovšem
+obsahuje několik nedostatků, které by bylo potřeba opravit. Prvním
+nedostatkem je synchronizace struktury databáze a vložených dat, kdy
+při tvorbě tabulky, která přebírá data z centrální databáze není
+proveden sken této databáze, ale je přímo vytvořena tabulka, která
+odpovídá její aktuální verzi. Pokud se tedy provedou změny v této
+databázi, nepromítnou se do námi vytvořená tabulky. Dalším problémem
+je stahování obrázků z databázového serveru. Obrázky nejsou stahovány
+z databázového serveru, ale je stahován pouze předpřipravený soubor s
+několika vybranými obrázky.
