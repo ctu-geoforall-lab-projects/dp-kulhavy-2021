@@ -4,10 +4,8 @@
 \section{Volba metody pro tvorbu webové aplikace}
 
 Při volbě, jakou metodu pro tvorbu aplikace použít, se nabízelo několik
-%% ML: napr. za pouziti
-%% ML: Vas vicet neni rozhodne konecny
-možností jak ji vytvořit. Aplikace by mohla být vytvořena za použití
-skriptovací jazyka PHP, Javascriptu nebo například Python frameworku 
+možností jak ji vytvořit. Aplikace by mohla být vytvořena například za použití
+skriptovací jazyka PHP, Javascriptu nebo Python frameworku 
 pro tvorbu webových aplikací. 
 
 Ze zadání projektového týmu ovšem vyplynulo, že by aplikace měla být
@@ -19,14 +17,13 @@ Frameworkem je označována platforma, která se používá pro tvorbu aplikací
 Je to soubor podpůrných programů a knihoven, které mají za cíl usnadnit 
 jejich vývoj. Výběr vhodného frameworku byl vzhledem k jejich množství 
 složitý. Mezi hlavní kritéria pro výběr frameworku se proto zařadila snadná
-%% ML:: pokud trvate na anglictine, tak alespon do uvozovek
-práce s databází, implementace per object permissions a dostupnost 
+práce s databází, implementace oprávnění k objekům a dostupnost 
 výukových materiálů a komunitní podpora. Díky těmto kritériím se nakonec 
 vybíralo ze dvou frameworků, a to Flask a Django.
 
 \begin{figure}[H] \centering
     \includegraphics[width=240pt]{./pictures/1-django-vs-flask.jpeg}
-    \caption[Flask vs Django]{Flask vs Django \cite{django-vs-flask}}
+    \caption[Flask vs Django]{Flask vs Django (\url{https://miro.medium.com/max/1672/1*TbMXbstb039keN-glx2CqQ.jpeg)}}
 	\label{fig:Flask vs Django}                                
 \end{figure}
 
@@ -48,7 +45,7 @@ model z databáze, který se zde může upravovat a poté jednoduchými
 příkazy promítnout úpravy zpět do databáze. Další výhodou je implementované
 administrátorské rozhraní a možnost doinstalováním přídavných balíčků,
 poskytující jak grafické úpravy, tak přidané funkce. Jedním z nich je
-i balíček django-guardian zajišťující podporu per object permissions. \cite{django}
+i balíček django-guardian zajišťující podporu oprávnění k objektům. \cite{django}
 
 
 Z těchto frameworků byl nakonec vybrán pro tvorbu aplikace framework
@@ -69,21 +66,20 @@ položky. Textová data zpro\-středkovaná Národním muzem byla uložena v
 MariaDB databázi a obrazová data byla v souborovém systému. Příslušná
 databáze ovšem postrádá jakoukoli normalizaci a data obsahují spoustu
 duplicit. Nabízí se proto otázka, zda provést normalizaci dat a opět
-použít relační databázi, nebo použít nějakou z nerelačních
-%% ML: vetu prepiste, opakovani slova "problem"
+použít relační databázi, nebo nějakou z nerelačních
 databází. Asi zásadní problém s NoSQL databází, který by mohl nastat
-je problém v komunikaci s frameworkem pro vývoj webových aplikací. Ty
+je v komunikaci s frameworkem pro vývoj webových aplikací. Ty
 v zásadě nemají problém komunikovat s jakýmkoliv typem relační
-databáze, ovšem často nemají engine pro databáze typu NoSQL. Zvolili
-jsme tedy relační databázi, a to MariaDB z důvodu poskytnutí dat právě
+databáze, ovšem často nemají engine pro databáze typu NoSQL. Byla 
+tedy zvolena relační databázi, a to MariaDB z důvodu poskytnutí dat právě
 z tohoto databázového systému. \cite{django} \cite{mariadb}
 
 \newpage
 
 \section{Automatizace nasazení aplikace}
 
-%% ML: deployment v zavorce anebo alespon v uvozovkach
-Jedním z hlavních úkolů je také automatizace deploymentu aplikace a
+
+Jedním z hlavních úkolů je také automatizace nasazení aplikace a
 zajištění bezproblémového chodu na všech zařízeních. Při této otázce
 jsme se nejprve museli rozhodnout, na jakém operačním systému se bude
 aplikace vyvíjet a následně bude provozována. Po kratší úvaze jsme
@@ -132,6 +128,18 @@ rozdělení by došlo ke ztrátě vztahů, které mezi daty platí. \cite{normal
 
 
 
+\section{Objektově relační mapování}
+
+Objektově relační mapování (ORM) zajišťuje konverzi dat mezi relační
+databází a objektově orientovaným programovacím jazykem. Umožňuje
+konverzi SQL tabulek do tříd a usnadňuje tak práci s psaním SQL
+dotazů. Pro tuto konverzi se často používají externí programy, které
+umožňují tyto konverze mezi řadou databázových systémů. Jedním z nich
+je například SQLAlchemy, které umožňuje tuto konverzi pro programovací
+jazyk Python a relační databáze SQLite, Postresql, MySQL a
+další. Některé aplikace včetně Django si ovšem tuto konverzi
+zprostředkovávají sami za pomoci vlastního ORM. \cite{orm}
+\cite{sqlalchemy}
 
 
 

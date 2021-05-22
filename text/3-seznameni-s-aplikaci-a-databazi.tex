@@ -30,14 +30,13 @@ funkcionalit. Databáze obsahovala pouze tabulku s textovými daty.
  \newpage
 
 \section{Centrální databáze}
-
+\label{centralni-db}
 Databáze fondů Národního muzea obsahuje objekty, které se budou ve 
 vyvíjené aplikaci zobrazovat a budou rozšířena o další data. Všechna data 
 v této databázi jsou obsažena v jedná tabulace. Část sloupců v této tabulce 
 obsahuje informace o objektu a část o obrázku, který je k němu přidělen. 
 Jednotlivé objekty ovšem disponují více obrázky, kdy se pro každý obrázek
-%% ML: objekt -> zaznam
-vytváří nový databázový objekt. Zde dochází k duplikování velké části dat, 
+vytváří nový databázový záznam. Zde dochází k duplikování velké části dat, 
 kdy se sloupce s informacemi o objektu kopírují a mění se pouze část s 
 obrázky a jejich metadaty. Databáze je tedy v nenormalizované formě.
 

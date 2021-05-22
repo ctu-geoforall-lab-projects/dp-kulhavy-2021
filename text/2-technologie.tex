@@ -5,8 +5,7 @@
 
 \begin{figure}[H] \centering
   \includegraphics[width=160pt]{./pictures/django-logo.png}
-  %% ML: chybi zdroj
-    \caption[Django Logo]{Django Logo \cite{}}
+    \caption[Django Logo]{Django Logo (\url{https://www.djangoproject.com/community/logos/})}
 	\label{fig:Django Logo}                                
 \end{figure}
 
@@ -21,8 +20,7 @@ Django bylo vytvořeno v roce 2005 americkou společností The World
 Company. Jeho první verze byla označena 0.90 a vyšla 16. listopadu
 2005. Vývojáři pokračovali v jeho zdokonalování, kdy bylo během
 následujících pár let provedeno několik aktualizací. V roce 2008 byla
-%% ML: vyraz "update" mate v ceskem textu evidetne v oblibe ;-)
-vydána verze 1.0. Vývoj se nezastavil a po několika updatech byl v
+vydána verze 1.0. Vývoj se nezastavil a po několika aktualizacích byl v
 roce 2013 vydána verze 1.5, která zajišťovala také podporu pro
 Python 3, dříve pouze Python 2. Další velkou aktualizací bylo vydání nové
 verze Django 2.0 na konci roku 2017. Ta zajišťovala plnou podporu pro
@@ -94,7 +92,7 @@ Pomocí nástroje manage.py se v Djangu spouští řada důležitých
 příkazů. Zde je výčet těch nejdůležitějších a jejich popis. \cite{django-admin-manage}
 
 \begin{itemize}
-\item {\tt python manage.py runserver} - tento příkaz spouští
+\item {\tt python manage.py runserver} \label{runserver}- tento příkaz spouští
   aplikaci na lokálním serveru. Standardně je to na adrese
   127.0.0.1:8000. Aplikace je po spuštění přístupná pouze z daného
   zařízení a není možné se k ní připojit ani v rámci lokální
@@ -203,8 +201,7 @@ dodatečné informace o tabulce.
 
 \begin{figure}[H] \centering
   \includegraphics[width=300pt]{./pictures/2-model-example.png}
-  %% ML: proc zde mate citaci?
-    \caption[Model příklad]{Ukázka models.py \cite{}}
+    \caption[Model příklad]{Ukázka models.py}
 	\label{fig:Ukázka models.py}                                
 \end{figure}
 
@@ -310,22 +307,7 @@ nejrůznějších formátů nebo správa uživatelů. K přístupu do rozhraní
 phpMyAdmin je zapotřebí webový prohlížeč s podporou cookies a
 JavaScriptu. \cite{phpmyadmin} \cite{phpmyadmin-2}
 
-%% ML: tato kapitola patri spise do reserse
-\section{Objektově relační mapování}
 
-Objektově relační mapování (ORM) zajišťuje konverzi dat mezi relační
-databází a objektově orientovaným programovacím jazykem. Umožňuje
-konverzi SQL tabulek do tříd a usnadňuje tak práci s psaním SQL
-dotazů. Pro tuto konverzi se často používají externí programy, které
-umožňují tyto konverze mezi řadou databázových systémů. Jedním z nich
-je například SQLAlchemy, které umožňuje tuto konverzi pro programovací
-jazyk Python a relační databáze SQLite, Postresql, MySQL a
-další. Některé aplikace včetně Django si ovšem tuto konverzi
-zprostředkovávají sami za pomoci vlastního ORM. \cite{orm}
-\cite{sqlalchemy}
-
-\textbf{}
-\textit{}
 
 
 

@@ -50,10 +50,9 @@ definuje model, který se má zobrazit a template\_name neboli název
 
 
 V souboru \emph{urls.py} jsou propojeny URL adresy, pohledy a HTML
-šablony, na které se odkazují. Do urls.py musí být zároveň importovány
-%% ML: Vetu "import path" zkuste prepsat.
-všechny použité pohledy. Dále se provede import path. Poté se
-sestaví urlpatterns, což je seznam, který obsahuje jednotlivé
+šablony, na které se odkazují. Do \emph{urls.py} musí být zároveň importovány
+všechny použité pohledy. Dále je potřeba vložit cestu přákazem \emph{import path}. 
+Poté se sestaví urlpatterns, což je seznam, který obsahuje jednotlivé
 adresy. Ty jsou v něm uvedeny ve funkci path, která má dva povinné
 argumenty, route a view a dva nepovinné, name a kwargs. Route uvádí
 adresu, pod jakou se bude stránka načítat a view odkazuje na
@@ -91,18 +90,17 @@ pomocí CSS (Cascading Style Sheets).
 \newpage
 
 \section{Přidání obrázků}
+\label{Přidání obrázků}
 
 Dalším úkolem bylo vyřešit přidávání obrázků k jednotlivým
-záznamům. Obrázky by se neměly ukládat do databáze, ale do adresáře v
-aplikaci. Databáze poté bude obsahovat cestu k těmto souborům. K tomu
+záznamům. Obrázky se neměly ukládat do databáze, ale do adresáře v
+aplikaci. Databáze poté měla obsahovat cestu k těmto souborům. K tomu
 byla vytvořena nová tabulka, který byla přes cizí klíč spojena s
 tabulkou se záznamy. Tabulka byla vytvořena v modelu, a poté pomocí
 migrací byla přenesena do databáze. Obsahuje tedy pole ID, což je
-%% ML: pridejte odkaz na diagram db struktury
 primární klíč tabulky, Post, který je cizím klíčem k tabulce Cvut a
-sloupec Image, do kterého se zaznamenává cesta k danému souboru.
-%% ML: nefunkcni citace
-Pro zobrazení obrázků ještě musel být doinstalován přídavný modul Pillow. \cite{chaiken}
+sloupec Image, do kterého se zaznamenává cesta k danému souboru viz \ref{fig:Struktura výběrové databáze}.
+Pro zobrazení obrázků ještě musel být doinstalován přídavný modul Pillow.
 
 
 \begin{figure}[H] \centering
@@ -130,13 +128,11 @@ připojí funkce static.
 \section{Statické soubory}
 
 Pro řešení vizuální stránky webu jsou používány CSS soubory. Ve složce
-aplikace se tedy vytvoří adresář static a tomu v \emph{settings} se
+aplikace se tedy vytvoří adresář \emph{static} a tomu se v \emph{settings.py} 
 určí jeho nastavení pro statické soubory příkazy STATIC\_URL =
   '/static/' a STATICFILES\_DIRS = [os.path.join( BASE\_DIR,
-    'static')]. Ve složce static je vytvořen adresář css, kde se
-%% ML: v textu pouzivate nekonzistentni formatovani, nekde jsou nazvy
-%% souboru bez formatovani, jinde kurzivou a pod.
-nachází základní CSS soubor base.css. Ten je ovšem prázdný a není
+    'static')]. Ve složce static je vytvořen adresář \emph{css}, kde se
+nachází základní CSS soubor \emph{base.css}. Ten je ovšem prázdný a není
 připojen k žádnému HTML souboru.
 
 \begin{figure}[H] \centering
@@ -169,10 +165,9 @@ Při jeho tvorbě a modifikaci byla jako podklad použita oficiální dokumentac
 
 \newpage
 
-%% ML: Nepouzivejte anglictinu v nazvu kapitoly
-\section{Per object permission}
-
-Dalším úkolem bylo zajištění per object permissions, tedy že uživatel nebude moci editovat celou tabulku, ale jen objekty, ke kterým bude mít udělená práva. Tuto možnost zajišťuje přídavný balíček django-guardian, který ovšem po jeho instalaci a implementaci nefungoval správně, a i po nastavení práv uživatel nemohl daný objekt editovat. Vymyslel se tedy systém za použití autentifikačního systému, kdy se do tabulky Cvut přidá nová proměnná managers, ve které se budou moci vybírat registrovaní uživatelé. Tato proměnná vytváří v databázi novou tabulku, která obsahuje ID, ID uživatele a ID objektu v tabulce. Ve vytvořených třídách v \emph{admin.py} je poté možnost pomocí funkcí has\_view\_permission(), has\_add\_permission(), has\_change\_permission() a has\_delete\_permission() modifikovat práva k tabulkám. Zde se tedy změnilo nastavení funkcí tak, aby tabulky mohl editovat superuživatel, uživatel, který to má udělená práva editovat celou tabulku nebo uživatel, který je přidaný v tabulce managers. 
+\section{Oprávnění k objektům}
+\label{pop}
+Dalším úkolem bylo zajištění oprávnění k objektům (per object permissions), tedy že uživatel nebude moci editovat celou tabulku, ale jen objekty, ke kterým bude mít udělená práva. Tuto možnost zajišťuje přídavný balíček django-guardian, který ovšem po jeho instalaci a implementaci nefungoval správně, a i po nastavení práv uživatel nemohl daný objekt editovat. Vymyslel se tedy systém za použití autentifikačního systému, kdy se do tabulky Cvut přidá nová proměnná Managers, ve které se budou moci vybírat registrovaní uživatelé. Tato proměnná vytváří v databázi novou tabulku, která obsahuje ID, ID uživatele a ID objektu v tabulce. Ve vytvořených třídách v \emph{admin.py} je poté možnost pomocí funkcí has\_view\_permission(), has\_add\_permission(), has\_change\_permission() a has\_delete\_permission() modifikovat práva k tabulkám. Zde se tedy změnilo nastavení funkcí tak, aby tabulky mohl editovat superuživatel, uživatel, který to má udělená práva editovat celou tabulku nebo uživatel, který je přidaný v tabulce Managers. 
 
 \begin{figure}[H] \centering
     \includegraphics[width=330pt]{./pictures/11-managers-model.PNG}
@@ -212,8 +207,8 @@ Při hledání jednoduché a efektivní cesty pro úpravu administrátorského p
 
 
 \section{Tvorba databáze}
-
-Po vytvoření základních funkcionalit aplikace byla projektovému týmu zprostředkována databáze s daty, která se mají zobrazovat. Forma poskytnutých dat byla specifikována v kapitole 3.3 centrální databáze. Django nedisponuje jednoduchým řešením, jak redukovat duplicitní záznamy a přiřadit jednotlivé obrázky k jednomu záznamu. Úkolem projektového týmu tedy bylo vymyslet řešení, které by tento problém odstranilo. Jako nejlepší řešení se ukázalo z původní tabulky (base\_data) exportovat data se sloupci, které příslušely k jednotlivým objektům a vložit je do nové tabulky. Tímto vznikla samostatná tabulka všech objektů (cvut). Dále se z původní tabulky vybrali sloupce, kde byly umístěny informace o uložených fotografiích a byly opět vloženy do samostatné tabulky (base\_images). Tato tabulka byla pomocí cizího klíče propojena s tabulkou cvut, kde se fotografie odkazovali na jednotlivé objekty. Data se tedy dostaly do normalizované podoby podle třetího stupně.
+\label{tvorba-database}
+Po vytvoření základních funkcionalit aplikace byla projektovému týmu zprostředkována databáze s daty, která se mají zobrazovat. Forma poskytnutých dat byla specifikována v kapitole [\ref{centralni-db}]. Django nedisponuje jednoduchým řešením, jak redukovat duplicitní záznamy a přiřadit jednotlivé obrázky k jednomu záznamu. Úkolem projektového týmu tedy bylo vymyslet řešení, které by tento problém odstranilo. Jako nejlepší řešení se ukázalo z původní tabulky (Base\_Data) exportovat data se sloupci, které příslušely k jednotlivým objektům a vložit je do nové tabulky. Tímto vznikla samostatná tabulka všech objektů (Cvut). Dále se z původní tabulky vybrali sloupce, kde byly umístěny informace o uložených fotografiích a byly opět vloženy do samostatné tabulky (Base\_Images). Tato tabulka byla pomocí cizího klíče propojena s tabulkou Cvut, kde se fotografie odkazovali na jednotlivé objekty. Data se tedy dostaly do normalizované podoby podle třetího stupně.
 
 \begin{figure}[H] \centering
     \includegraphics[width=270pt]{./pictures/18-db-diagram-1.PNG}
@@ -221,6 +216,25 @@ Po vytvoření základních funkcionalit aplikace byla projektovému týmu zpros
 	\label{fig:Struktura noramlizované databáze}              
 \end{figure}
 
+\section{Doplnění výběrové databáze}
+
+Tato databáze už obsahuje data z centrální databáze, které se pomocí
+skriptu upravily dle kapitoly [\ref{tvorba-database}]. Po konzultaci
+projektového týmu se dospělo k závěru, že se k jednotlivým objektům
+budou přidávat nejen obrázkové soubory, ale také modely a jiné
+dokumenty. Vytvořila se tedy tabulka CvutFiles, která odpovídala
+tabulce z kapitoly [\ref{Přidání obrázků}], ovšem s tím rozdílem že místo
+ImageFile byl použit FileField a byla doplněna o textové informace
+jako popis nebo typ dokumenty. Tabulka Cvut se opět rozšířila o
+sloupec Managers viz kapitola [\ref{pop}].
+
+\begin{figure}[H] \centering
+    \includegraphics[width=400pt]{./pictures/23-db-diagram-2.PNG}
+    \caption[Struktura výběrové databáze]{Struktura výněrové databáze}
+	\label{fig:Struktura výběrové databáze}              
+\end{figure}
+
+\newpage
 
 \section{Automatizace nasazení aplikace a databáze}
 
@@ -244,7 +258,7 @@ souboru \emph{Dockerfile} je přesně popsáno jeho sestavení. Jako první
 je zde definováno sestavení databáze mariadb. Dále je zde doinstalován
 soubor \emph{requirements.txt}, který obsahuje potřebná
 rozšíření. Dalším souborem \emph{init.py} se vytváří základní tabulka
-base\_data, která se striktně vytváří dle aktuální verze centrální
+Base\_Data, která se striktně vytváří dle aktuální verze centrální
 databáze a neimituje její změny. S touto tabulkou se pomocí skriptu
 \emph{sync-db.py} synchronizují data z centrální databáze, a nakonec
 se pomocí \emph{permissions.sql} vytvoří superuživatel, a nastaví se
@@ -257,18 +271,15 @@ opět musí doinstalovat potřebná rozšíření, zapsaná v
 \emph{requirements.txt} a spustí se skript \emph{startup.sh}. Tímto
 skriptem se databáze doplňuje o další tabulky a jejich
 objekty. Nejprve se zde provede inspectdb, kterým se vytvoří
-\emph{models.py} s tabulkou base\_data. Vytvořený model je rozšířen o
-%% ML: ostatni tabulky jsou malymi pismeny, cvut, cvut_files, dale v
-%% textu jiz mate nazev takulky malymi pismeny, sjednotte to (i z
-%% pohledu formatovani)
-tabulky Cvut, CvutFiles a base\_images a migrací je převeden do
-databáze. Toto je z důvodů autentifikačního systému, kdy managers,
+\emph{models.py} s tabulkou Base\_Data. Vytvořený model je rozšířen o
+tabulky Cvut, CvutFiles a Base\_Images a migrací je převeden do
+databáze. Toto je z důvodů autentifikačního systému, kdy Managers,
 které jsou v modelu zapsány v tabulce Cvut vytváří v databázi vlastní
-tabulku. Pokud bychom vytvořili tabulku managers v databázi a pomocí
+tabulku. Pokud bychom vytvořili tabulku Managers v databázi a pomocí
 inspectdb by se převedla do modelu, vytvořila by se tam jako
 samostatná tabulka a nesplňovala by požadovanou
-funkcionalitu. Vytvořené tabulky cvut a base\_images se pomocí SQL
-příkazů v \emph{cvut.sql} doplní o data z tabulky base\_data. Obrázky,
+funkcionalitu. Vytvořené tabulky Cvut a Base\_Images se pomocí SQL
+příkazů v \emph{cvut.sql} doplní o data z tabulky Base\_Data. Obrázky,
 na které se odkazují jsou momentálně předpřipravené a uložené na
 serveru geo102.fsv.cvut.cz, odkud se stáhnou a uloží do složky
 \emph{media}. Nakonec se aplikace spustí příkazem runserver.
@@ -279,28 +290,6 @@ serveru geo102.fsv.cvut.cz, odkud se stáhnou a uloží do složky
 	\label{fig:Postup tvorby aplikace a databáze}              
 \end{figure}
 
-\newpage
-
-%% ML: Nove? Vyberova databaze vznika z centralni databaze
-\section{Doplnění nové databáze}
-
-Tato databáze už obsahuje data z centrální databáze, které se pomocí
-skriptu upravily dle kapitoly (Tvorba databáze). Po konzultaci
-projektového týmu se dospělo k závěru, že se k jednotlivým objektům
-budou přidávat nejen obrázkové soubory, ale také modely a jiné
-dokumenty. Vytvořila se tedy tabulka CvutFiles, která odpovídala
-%% ML: upravit nazev kapitoly, jinak lze na kapitoly odkazovat
-%% hyperlinkem (\label{} + \ref{}), podobne jako na obrazky
-tabulce z kapitoly (pridavani obrazku), ovšem s tím rozdílem že místo
-ImageFile byl použit FileField a byla doplněna o textové informace
-jako popis nebo typ dokumenty. Tabulka Cvut se opět rozšířila o
-sloupec managers viz kapitola (Per object permission).
-
-\begin{figure}[H] \centering
-    \includegraphics[width=400pt]{./pictures/23-db-diagram-2.PNG}
-    \caption[Struktura doplněné databáze]{Struktura doplněné databáze}
-	\label{fig:Struktura dopněné databáze}              
-\end{figure}
 
 \newpage
 
@@ -309,14 +298,11 @@ sloupec managers viz kapitola (Per object permission).
 S přidáním nové tabulky a nových proměnných bylo potřeba upravit
 zobrazení v administrátorském prostředí. Data z centrální databáze
 uživatelé nebudou moci přidávat editovat ani mazat, proto u tabulek
-%% opet sjednotit, CvutFiles vs. base_images
-Cvut a base\_images byly tyto možnosti úplně odstraněny a tabulka
-base\_images byla nastavena, aby se její fotografie, které jsou v ní
+Cvut a Base\_Images byly tyto možnosti úplně odstraněny a tabulka
+Base\_Images byla nastavena, aby se její fotografie, které jsou v ní
 uložené zobrazovali u jednotlivých objektů. U tabulky CvutFiles byla
 nastavena možnost přidávání, editace nebo mazání souborů
-%% ML: v textu pouzivate doslovny preklad "superuzivate", lepsi by
-%% bylo mozna "administratora", ale to uz nechte
-superuživatelům a uživatelům s oprávněním k danému objektu. Bylo také
+administrátorům a uživatelům s oprávněním k danému objektu. Bylo také
 upraveno zobrazení dat jak v hlavní nabídce, tak na stránce
 zobrazující informace o daném objektu. U obrázků také byl vytvořen
 jejich náhled v administrátorském prostředí s možností jejich
