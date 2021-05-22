@@ -20,7 +20,7 @@ Django bylo vytvořeno v roce 2005 americkou společností The World
 Company. Jeho první verze byla označena 0.90 a vyšla 16. listopadu
 2005. Vývojáři pokračovali v jeho zdokonalování, kdy bylo během
 následujících pár let provedeno několik aktualizací. V roce 2008 byla
-vydána verze 1.0. Vývoj se nezastavil a po několika aktualizacích byl v
+vydána verze 1.0. Vývoj se nezastavil a po několika aktualizacích byla v
 roce 2013 vydána verze 1.5, která zajišťovala také podporu pro
 Python 3, dříve pouze Python 2. Další velkou aktualizací bylo vydání nové
 verze Django 2.0 na konci roku 2017. Ta zajišťovala plnou podporu pro
@@ -101,12 +101,12 @@ příkazů. Zde je výčet těch nejdůležitějších a jejich popis. \cite{dja
   automaticky zobrazí ve výstupu.
 	
 \item {\tt python manage.py makemigrations [název aplikace]} -
-  tento příkaz provede porovnání modelu a s databází. Pokud jsou
+  tento příkaz provede porovnání modelu s databází. Pokud jsou
   nalezeny změny, vytvoří se nový soubor se stávajícími migracemi. Ten
   obsahuje SQL příkazy, jak by se měla vytvořit databáze podle modelu
   definovaném v aplikaci. Příkaz se definuje zadáním jména aplikace,
-  potažmo aplikací, lze tedy vytvořit migrace pouze pro jednu nebo
-  více aplikací, zadáním jejich názvů.
+  potažmo aplikací. Lze tedy vytvořit migrace pro jednu nebo
+  více aplikací zadáním jejich názvů.
 
 \item {\tt python manage.py migrate} - spuštěním tohoto příkazu se
   synchronizuje databáze s modelem podle migračního souboru, který je
@@ -180,9 +180,9 @@ databází SQLite, která se automaticky vytvoří v adresáři projektu. V
 souboru settings.py lze ovšem nastavit připojení k vlastní, již
 existující databázi. Při tvorbě databáze se do models.py tedy vytváří
 modely jednotlivých tabulek, které poté pomocí příkazů makemigrations
-a migrate vytvoří nebo upraví tabulky v naší databázi. S databází jako
-takovou tedy vůbec nemusíme pracovat. Při připojování, k již
-existující databázi lze příkazem inspectdb vygeneruje model stávající
+a migrate vytvoří nebo upraví tabulky v databázi. S databází jako
+takovou tedy vůbec nemusí pracovat. Při připojování k již
+existující databázi lze příkazem inspectdb vygenerovat model stávající
 databáze. Django oficiálně podporuje databáze PostgreSQL, MariaDB,
 MySQL, Oracle a SQLite. Jsou zde ovšem i komunitně vytvořené balíčky
 pro podporu NoSQL databáze MongoDB. \cite{django}
@@ -210,7 +210,7 @@ dodatečné informace o tabulce.
 \subsection{Django - přídavné balíčky}
 
 Packages, neboli balíčky jsou nástroje pro usnadnění práce s
-djangem. Tyto balíčky mají mnoho funkcí, a to od změny vzhledu
+Djangem. Tyto balíčky mají mnoho funkcí, a to od změny vzhledu
 stránky, až po implementaci nových funkcí do administrátorské aplikace. Většina
 balíčků je tvořena komunitou a každý uživatel si také může vytvořit
 svůj vlastní. Pro nalezení vhodného balíčku slouží například stránka
@@ -226,16 +226,16 @@ vytvo\-ření tabulek v databázi. \cite{django-packages}
 
 Jeden z nejdůležitějších komponentů Djanga je administrátorské
 rozhraní, které dovoluje oprávněným uživatelům pracovat s daty
-uloženými v databázi. Pomocí registrovaných modelů, může uživatel s
+uloženými v databázi. Pomocí registrovaných modelů může uživatel s
 oprávněním prohlížet, přidávat, upravovat a mazat data v jednotlivých
 modelech. Administrátorská aplikace je od té uživatelské oddělena a je
 možné se do ní dostat přidáním \textit{/admin} za webovou adresu. Pro
 přihlášení musí být uživatel registrován jako \textit{staff} a poté mu
-musí být udělenu práva k jednotlivým modelům. V aplikaci je možné
+musí být udělena práva k jednotlivým modelům. V aplikaci je možné
 nastavit práva jednotlivcům, popřípadě skupinám, do kterých se poté
 uživatelé přidávají.
 
-Registrace modelů a jejich následná úprava se prování v souboru
+Registrace modelů a jejich následná úprava se provádí v souboru
 admin.py. Nejprve se modely musí importovat a poté registrovat pro
 zobrazení v administrátorském rozhraní. Pokud je potřeba tabulky
 modifikovat, například zobrazit jen některá data, je třeba vytvořit ke
@@ -260,7 +260,7 @@ Windows. Aplikace spuštěná v Dockeru je izolovaná, a nezasahuje do
 ostatních aplikací. Je zde také snadná možnost testovat nové verze
 knihoven a aplikací.
 
-Při použití Dockeru je nutné nejprve vytvoří obraz, která obsahuje 
+Při použití Dockeru je nutné nejprve vytvoří obraz, který obsahuje 
 všechny aplikace a jejich nastavení potřebné pro bezproblémový chod. 
 Z tohoto obrazu se poté vytvoří kontejner, který obsahuje také svou 
 vlastní vrstvu, kde jsou uloženy všechny změny, které uživatel provedl.
@@ -302,7 +302,7 @@ Je to open source nástroj pro správu MySQL a MariaDB databáze pomocí
 webového rozhraní. Je napsaný v jazyce PHP a je k dispozici ve více jak 70
 jazycích včetně češtiny. Toto rozhraní umožňuje provádět SQL příkazy
 jako jsou CREATE, DROP, ALTER table a spravovat obsah tabulek. Dále je
-zde možno například import dat z CSV souborů, export dat do
+zde možný například import dat z CSV souborů, export dat do
 nejrůznějších formátů nebo správa uživatelů. K přístupu do rozhraní
 phpMyAdmin je zapotřebí webový prohlížeč s podporou cookies a
 JavaScriptu. \cite{phpmyadmin} \cite{phpmyadmin-2}

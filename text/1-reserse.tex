@@ -27,7 +27,7 @@ vybíralo ze dvou frameworků, a to Flask a Django.
 	\label{fig:Flask vs Django}                                
 \end{figure}
 
-Flask je open source webový framework napsaný v Pythonu, klasifikovaný
+Flask je open source webový framework napsaný v jazyce Python, klasifikovaný
 jako mikro z důvodu, že není potřeba žádných dodatečných knihoven ani
 jiných nástrojů. Do Flasku lze ovšem doinstalovat různá rozšíření,
 která v základní verzi chybí jako například Flask-Admin, což je
@@ -39,7 +39,7 @@ naší aplikace je, že nedisponuje datovými modely. Pokud bychom v průběhu
 vývoje chtěli přidat sloupec do naší databáze, musíme to udělat ručně
 v databázi a poté ho přidat do třídy ve webové aplikaci. \cite{flask}
 
-Django je nejpoužívanějším open source frameworkem. Jednou z jeho funkcí je že
+Django je nejpoužívanějším open source frameworkem. Jednou z jeho funkcí je, že
 disponuje objektově relačním mapováním. Jeho vlastností je tedy možnost generovat
 model z databáze, který se zde může upravovat a poté jednoduchými
 příkazy promítnout úpravy zpět do databáze. Další výhodou je implementované
@@ -71,7 +71,7 @@ databází. Asi zásadní problém s NoSQL databází, který by mohl nastat
 je v komunikaci s frameworkem pro vývoj webových aplikací. Ty
 v zásadě nemají problém komunikovat s jakýmkoliv typem relační
 databáze, ovšem často nemají engine pro databáze typu NoSQL. Byla 
-tedy zvolena relační databázi, a to MariaDB z důvodu poskytnutí dat právě
+tedy zvolena relační databáze a to MariaDB, z důvodu poskytnutí dat právě
 z tohoto databázového systému. \cite{django} \cite{mariadb}
 
 \newpage
@@ -79,12 +79,12 @@ z tohoto databázového systému. \cite{django} \cite{mariadb}
 \section{Automatizace nasazení aplikace}
 
 
-Jedním z hlavních úkolů je také automatizace nasazení aplikace a
+Jedním z hlavních úkolů byla také automatizace nasazení aplikace a
 zajištění bezproblémového chodu na všech zařízeních. Při této otázce
-jsme se nejprve museli rozhodnout, na jakém operačním systému se bude
-aplikace vyvíjet a následně bude provozována. Po kratší úvaze jsme
-zvolili systém Linux, který je vhodnější zejména pro vývoj aplikací v
-jazyce Python. Zde jsme tedy hledali vhodný software pro
+se projektový tým nejprve musel rozhodnout, na jakém operačním systému se bude
+aplikace vyvíjet a následně bude provozována. Po kratší úvaze se
+zvolil systém Linux, který je vhodnější zejména pro vývoj aplikací v
+jazyce Python. Zde se tedy hledal vhodný software pro
 kontejnerizaci naší vyvíjené aplikace. Hlavními důvody pro jejich
 použití je, že obsahují kompletní prostředí pro vývoj a chod aplikace
 jako jsou knihovny nebo konfigurační soubory. Aplikace a všechny její
@@ -121,7 +121,7 @@ odstraní všechny hodnoty, které platí pro více záznamů.
 Třetí stupeň udává, že by tabulka neměla obsahovat hodnoty, které jsou na sobě závislé. 
 
 Ve čtvrtém stupni by záznamy neměly obsahovat více nezávislých hodnot jedné podmnožiny. 
-Takovéto hodnoty by opět mely být převedeny do samostatné tabulky a spojeny cizím klíčem.
+Takovéto hodnoty by opět měly být převedeny do samostatné tabulky a spojeny cizím klíčem.
 
 Pátý stupeň platí, pokud není možné tabulku dále dělit bez ztráty dat. Po 
 rozdělení by došlo ke ztrátě vztahů, které mezi daty platí. \cite{normalizace}

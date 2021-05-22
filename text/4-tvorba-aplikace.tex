@@ -4,8 +4,8 @@
 \section{Vytvoření základní aplikace}
 
 Aplikace, která byla vytvořena v projektu FGIS nebyla vytvořena
-správně, a obsahovala zbytečně složitý, a chybný kód. Začalo se tedy
-od začátku. Nejprve byla vytvořen projekt příkazem \emph{django-admin
+správně, obsahovala zbytečně složitý a chybný kód. Začalo se tedy
+od začátku. Nejprve byl vytvořen projekt příkazem \emph{django-admin
   startproject mysite}. V projektu následně byla vytvořena aplikace
 pomocí \emph{python manage.py startapp}. Aplikace byla v
 \emph{settings.py} přidána do INSTALLED\_APPS. Dále se
@@ -13,23 +13,23 @@ nastavilo připojení k databázi. V \emph{settings.py} se tedy v
 DATABASES se změnil engine na MySQL, protože Django v základu
 používá SQLite. Změnilo se ještě NAME, USER, PASSWORD, HOST A PORT,
 protože databáze byla provozována na školním serveru
-geo102.fsv.cvut.cz. Po připojení se musel vygenerovat model databáze,
-příkazem inspectdb, viz. Instalace a inicializace projektu. Dále byla
+geo102.fsv.cvut.cz. Po připojení se musel vygenerovat model databáze
+příkazem inspectdb. Dále byla
 provedena migrace, aby se v databázi vytvořily Django
 tabulky. Posledním krokem bylo vytvoření superuživatele, který se bude
-moci přihlásit do naší i administrátorské aplikace. To bylo
+moci přihlásit do uživatelské i administrátorské aplikace. To bylo
 realizováno příkazem \emph{python manage.py createsuperuser}.
 
-Na stránce GitLab byl vytvořen nový repozitář, do kterého se celý
+Na stránce GitLab.com byl vytvořen nový repozitář, do kterého se celý
 projekt přesunul a nadále v něm byl průběžně zálohován. Dále se tam
 vytvářely tzv. \emph{issues}, kde se plánovaly nadcházející úkoly při
 tvorbě aplikace.
 
 \section{Tvorba aplikace v uživatelském prostředí}
 Při vytváření uživatelské aplikace bylo postupováno dle příkladu v \cite{django-for-beginners}.
-Prvním větším úkolem bylo vytvořit aplikace, která bude zobrazovat
-data, a po přihlášení je bude moci uživatel také přidávat, mazat a
-editovat. Nejprve se tady do adresáře aplikace přidala soubor  \emph{urls.py},
+Prvním větším úkolem bylo vytvořit aplikaci, která bude zobrazovat
+data a po přihlášení je bude moci uživatel také přidávat, mazat a
+editovat. Nejprve se tedy do adresáře aplikace přidal soubor \emph{urls.py},
 který se následně připojil k \emph{urls.py} v projektovém adresáři. Tento
 způsob je výhodný při použití více aplikací, kdy si každá aplikace
 uchovává své URL adresy a projekt je tak přehlednější. Pokračovalo se
@@ -51,7 +51,7 @@ definuje model, který se má zobrazit a template\_name neboli název
 
 V souboru \emph{urls.py} jsou propojeny URL adresy, pohledy a HTML
 šablony, na které se odkazují. Do \emph{urls.py} musí být zároveň importovány
-všechny použité pohledy. Dále je potřeba vložit cestu přákazem \emph{import path}. 
+všechny použité pohledy. Dále je potřeba vložit cestu příkazem \emph{import path}. 
 Poté se sestaví urlpatterns, což je seznam, který obsahuje jednotlivé
 adresy. Ty jsou v něm uvedeny ve funkci path, která má dva povinné
 argumenty, route a view a dva nepovinné, name a kwargs. Route uvádí
@@ -113,7 +113,7 @@ Pro zobrazení obrázků ještě musel být doinstalován přídavný modul Pill
 V nastavení se dále určí kořenový adresář pro nahrávané soubory
 MEDIA\_ROOT = os.path.join(BASE\_DIR, 'media') a
 MEDIA\_URL = '/media/'.  A v poslední řadě se musí nastavit v
-projektovém urls.py media soubory, které django samo neumí
+projektovém urls.py media soubory, které Django samo neumí
 zobrazovat. Zde se provede import settings a static a k urlpatterns se
 připojí funkce static.
 
@@ -144,7 +144,7 @@ připojen k žádnému HTML souboru.
 \section{Nastavení jazyka a času}
 
 Dalším nastavením bylo použití našeho středoevropského času a českého
-jazyka. Velice jednoduché nastavení, kdy v \emph{settings} je po
+jazyka. Velice jednoduché nastavení, kdy v \emph{settings.py} je po
 vytvoření aplikace nastaven jazyk na angličtinu a čas na UTC. Pro
 změnu se tedy přepíše LANGUAGE\_CODE = 'en-us' na
 LANGUAGE\_CODE = 'cs' a TIME\_ZONE = 'UTC' na
@@ -167,7 +167,7 @@ Při jeho tvorbě a modifikaci byla jako podklad použita oficiální dokumentac
 
 \section{Oprávnění k objektům}
 \label{pop}
-Dalším úkolem bylo zajištění oprávnění k objektům (per object permissions), tedy že uživatel nebude moci editovat celou tabulku, ale jen objekty, ke kterým bude mít udělená práva. Tuto možnost zajišťuje přídavný balíček django-guardian, který ovšem po jeho instalaci a implementaci nefungoval správně, a i po nastavení práv uživatel nemohl daný objekt editovat. Vymyslel se tedy systém za použití autentifikačního systému, kdy se do tabulky Cvut přidá nová proměnná Managers, ve které se budou moci vybírat registrovaní uživatelé. Tato proměnná vytváří v databázi novou tabulku, která obsahuje ID, ID uživatele a ID objektu v tabulce. Ve vytvořených třídách v \emph{admin.py} je poté možnost pomocí funkcí has\_view\_permission(), has\_add\_permission(), has\_change\_permission() a has\_delete\_permission() modifikovat práva k tabulkám. Zde se tedy změnilo nastavení funkcí tak, aby tabulky mohl editovat superuživatel, uživatel, který to má udělená práva editovat celou tabulku nebo uživatel, který je přidaný v tabulce Managers. 
+Dalším úkolem bylo zajištění oprávnění k objektům (per object permissions), tedy že uživatel nebude moci editovat celou tabulku, ale jen objekty, ke kterým bude mít udělená práva. Tuto možnost zajišťuje přídavný balíček django-guardian, který ovšem po jeho instalaci a implementaci nefungoval správně a i po nastavení práv uživatel nemohl daný objekt editovat. Vymyslel se tedy systém za použití autentifikačního systému, kdy se do tabulky Cvut přidá nová proměnná Managers, ve které se budou moci vybírat registrovaní uživatelé. Tato proměnná vytváří v databázi novou tabulku, která obsahuje ID, ID uživatele a ID objektu v tabulce. Ve vytvořených třídách v \emph{admin.py} je poté možnost pomocí funkcí has\_view\_permission(), has\_add\_permission(), has\_change\_permission() a has\_delete\_permission() modifikovat práva k tabulkám. Zde se tedy změnilo nastavení funkcí tak, aby tabulky mohl editovat superuživatel, uživatel, který má udělená práva editovat celou tabulku nebo uživatel, který je přidaný v tabulce Managers. 
 
 \begin{figure}[H] \centering
     \includegraphics[width=330pt]{./pictures/11-managers-model.PNG}
@@ -184,7 +184,7 @@ Dalším úkolem bylo zajištění oprávnění k objektům (per object permissi
 
 \section{Nastavení zobrazení dat a jejich vyhledávání}
 
-Django disponuje řadou funkcí pro nastavení zobrazení dat v administrátorském prostředí. Nejprve se nastavovalo zobrazení dat na stránce tabulky. Zde se měli zobrazovat pouze základní informace o objektu jako je ID, fond, okres, obec. To se nastavuje pomocí proměnné \emph{list\_display} a \emph{list\_display\_links} slouží pro určení položek, díky kterým se po kliknutí dostanete na stránku obsahující informace o daném objektu. Na této stránce se zobrazují všechny určené položky definované v listu \emph{fields}. Dále byly nastaveny filtry pomocí \emph{list\_filer} a vyhledávání \emph{search\_fields}. 
+Django disponuje řadou funkcí pro nastavení zobrazení dat v administrátorském prostředí. Nejprve se nastavovalo zobrazení dat na stránce tabulky. Zde se měly zobrazovat pouze základní informace o objektu jako je ID, fond, okres, obec. To se nastavuje pomocí proměnné \emph{list\_display} a \emph{list\_display\_links} slouží pro určení položek, díky kterým se po kliknutí dostanete na stránku obsahující informace o daném objektu. Na této stránce se zobrazují všechny určené položky definované v listu \emph{fields}. Dále byly nastaveny filtry pomocí \emph{list\_filer} a vyhledávání \emph{search\_fields}. 
 
 \begin{figure}[H] \centering
     \includegraphics[width=400pt]{./pictures/21-zobrazeni-dat.PNG}
@@ -208,7 +208,7 @@ Při hledání jednoduché a efektivní cesty pro úpravu administrátorského p
 
 \section{Tvorba databáze}
 \label{tvorba-database}
-Po vytvoření základních funkcionalit aplikace byla projektovému týmu zprostředkována databáze s daty, která se mají zobrazovat. Forma poskytnutých dat byla specifikována v kapitole [\ref{centralni-db}]. Django nedisponuje jednoduchým řešením, jak redukovat duplicitní záznamy a přiřadit jednotlivé obrázky k jednomu záznamu. Úkolem projektového týmu tedy bylo vymyslet řešení, které by tento problém odstranilo. Jako nejlepší řešení se ukázalo z původní tabulky (Base\_Data) exportovat data se sloupci, které příslušely k jednotlivým objektům a vložit je do nové tabulky. Tímto vznikla samostatná tabulka všech objektů (Cvut). Dále se z původní tabulky vybrali sloupce, kde byly umístěny informace o uložených fotografiích a byly opět vloženy do samostatné tabulky (Base\_Images). Tato tabulka byla pomocí cizího klíče propojena s tabulkou Cvut, kde se fotografie odkazovali na jednotlivé objekty. Data se tedy dostaly do normalizované podoby podle třetího stupně.
+Po vytvoření základních funkcionalit aplikace byla projektovému týmu zprostředkována databáze s daty, která se mají zobrazovat. Forma poskytnutých dat byla specifikována v kapitole [\ref{centralni-db}]. Django nedisponuje jednoduchým řešením, jak redukovat duplicitní záznamy a přiřadit jednotlivé obrázky k jednomu záznamu. Úkolem projektového týmu tedy bylo vymyslet řešení, které by tento problém odstranilo. Jako nejlepší řešení se ukázalo z původní tabulky (Base\_Data) exportovat data se sloupci, které příslušely k jednotlivým objektům a vložit je do nové tabulky. Tímto vznikla samostatná tabulka všech objektů (Cvut). Dále se z původní tabulky vybraly sloupce, kde byly umístěny informace o uložených fotografiích a byly opět vloženy do samostatné tabulky (Base\_Images). Tato tabulka byla pomocí cizího klíče propojena s tabulkou Cvut, kde se fotografie odkazovaly na jednotlivé objekty. Data se tedy dostala do normalizované podoby podle třetího stupně.
 
 \begin{figure}[H] \centering
     \includegraphics[width=270pt]{./pictures/18-db-diagram-1.PNG}
@@ -240,7 +240,7 @@ sloupec Managers viz kapitola [\ref{pop}].
 
 
 Úkolem projekčního týmu bylo vytvořit prostředí pro jednotný vývoj
-aplikace. Do tohoto prostředí bylo ovšem potřeba zahrnut jak aplikaci,
+aplikace. Do tohoto prostředí bylo ovšem potřeba zahrnout jak aplikaci,
 tak databázi, ke které se aplikace připojuje. Základním souborem pro
 tvorbu obrazů je \emph{docker-compose.yaml}. Ten definuje základní
 nastavení pro vytváření tří obrazů, ze kterých se budou spouštět
@@ -275,11 +275,11 @@ objekty. Nejprve se zde provede inspectdb, kterým se vytvoří
 tabulky Cvut, CvutFiles a Base\_Images a migrací je převeden do
 databáze. Toto je z důvodů autentifikačního systému, kdy Managers,
 které jsou v modelu zapsány v tabulce Cvut vytváří v databázi vlastní
-tabulku. Pokud bychom vytvořili tabulku Managers v databázi a pomocí
+tabulku. Pokud by se vytvořila tabulka Managers v databázi a pomocí
 inspectdb by se převedla do modelu, vytvořila by se tam jako
 samostatná tabulka a nesplňovala by požadovanou
 funkcionalitu. Vytvořené tabulky Cvut a Base\_Images se pomocí SQL
-příkazů v \emph{cvut.sql} doplní o data z tabulky Base\_Data. Obrázky,
+příkazů v \emph{cvut.sql} doplní o data z tabulky Base\_Data. Obrázky
 na které se odkazují jsou momentálně předpřipravené a uložené na
 serveru geo102.fsv.cvut.cz, odkud se stáhnou a uloží do složky
 \emph{media}. Nakonec se aplikace spustí příkazem runserver.
@@ -297,14 +297,14 @@ serveru geo102.fsv.cvut.cz, odkud se stáhnou a uloží do složky
 
 S přidáním nové tabulky a nových proměnných bylo potřeba upravit
 zobrazení v administrátorském prostředí. Data z centrální databáze
-uživatelé nebudou moci přidávat editovat ani mazat, proto u tabulek
-Cvut a Base\_Images byly tyto možnosti úplně odstraněny a tabulka
+uživatelé nebudou moci přidávat, editovat ani mazat. U tabulek
+Cvut a Base\_Images byly proto tyto možnosti úplně odstraněny a tabulka
 Base\_Images byla nastavena, aby se její fotografie, které jsou v ní
-uložené zobrazovali u jednotlivých objektů. U tabulky CvutFiles byla
+uložené, zobrazovaly u jednotlivých objektů. U tabulky CvutFiles byla
 nastavena možnost přidávání, editace nebo mazání souborů
 administrátorům a uživatelům s oprávněním k danému objektu. Bylo také
 upraveno zobrazení dat jak v hlavní nabídce, tak na stránce
-zobrazující informace o daném objektu. U obrázků také byl vytvořen
+zobrazující informace o daném objektu. U obrázků byl také vytvořen
 jejich náhled v administrátorském prostředí s možností jejich
 zvětšení.
 
