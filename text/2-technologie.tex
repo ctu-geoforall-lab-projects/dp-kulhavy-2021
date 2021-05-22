@@ -4,7 +4,8 @@
 \section{Django}
 
 \begin{figure}[H] \centering
-    \includegraphics[width=160pt]{./pictures/django-logo.png}
+  \includegraphics[width=160pt]{./pictures/django-logo.png}
+  %% ML: chybi zdroj
     \caption[Django Logo]{Django Logo \cite{}}
 	\label{fig:Django Logo}                                
 \end{figure}
@@ -20,6 +21,7 @@ Django bylo vytvořeno v roce 2005 americkou společností The World
 Company. Jeho první verze byla označena 0.90 a vyšla 16. listopadu
 2005. Vývojáři pokračovali v jeho zdokonalování, kdy bylo během
 následujících pár let provedeno několik aktualizací. V roce 2008 byla
+%% ML: vyraz "update" mate v ceskem textu evidetne v oblibe ;-)
 vydána verze 1.0. Vývoj se nezastavil a po několika updatech byl v
 roce 2013 vydána verze 1.5, která zajišťovala také podporu pro
 Python 3, dříve pouze Python 2. Další velkou aktualizací bylo vydání nové
@@ -39,7 +41,7 @@ verzi 3.1 je potřeba mít nainstalován verzi Python 3.6 nebo
 vyšší. Nejjednodušší je pomocí příkazové řádky spustit příkaz {\tt pip
 install django}, čímž by se měla nainstalovat nejaktuálnější verze
 Djanga. Po instalaci lze pro zobrazení aktuální verze použít příkaz
-django-admin --version. Po instalaci se opět pomocí příkazové řádky
+{\tt django-admin --version}. Po instalaci se opět pomocí příkazové řádky
 provede vytvoření projektu v aktuální složce příkazem {\tt django-admin
 startproject [název projektu]}. \cite{django-init} Tímto se vytvoří nový adresář který
 vypadá následovně:
@@ -166,7 +168,7 @@ testování funkčnosti aplikace.
 \vspace{6px}
 
 \textbf{migrations} ve složce migrations se nacházejí všechny migrační
-soubory, vytvořené při spuštění příkazu \textit{makemigrations}
+soubory, vytvořené při spuštění příkazu \textit{makemigrations}.
 
 \newpage
 
@@ -200,7 +202,8 @@ dodatečné informace o tabulce.
 \vspace{15px}
 
 \begin{figure}[H] \centering
-    \includegraphics[width=300pt]{./pictures/2-model-example.png}
+  \includegraphics[width=300pt]{./pictures/2-model-example.png}
+  %% ML: proc zde mate citaci?
     \caption[Model příklad]{Ukázka models.py \cite{}}
 	\label{fig:Ukázka models.py}                                
 \end{figure}
@@ -220,7 +223,7 @@ je detailně popsána jejich dokumentace. Jejich implementace je opravdu
 jednoduchá, pomocí pip se nainstaluje příslušný balíček (např. {\tt pip
 install django-rest)}. Dále se v projektu v souboru settings.py přidá
 rozšíření do INSTALLED\_APPS a provede se migrace pro
-vytvoření tabulek v databázi. \cite{django-packages}
+vytvo\-ření tabulek v databázi. \cite{django-packages}
 
 \subsection{Django - administrátorské rozhraní}
 
@@ -307,9 +310,19 @@ nejrůznějších formátů nebo správa uživatelů. K přístupu do rozhraní
 phpMyAdmin je zapotřebí webový prohlížeč s podporou cookies a
 JavaScriptu. \cite{phpmyadmin} \cite{phpmyadmin-2}
 
+%% ML: tato kapitola patri spise do reserse
 \section{Objektově relační mapování}
 
-Objektově relační mapování (ORM) zajišťuje konverzi dat mezi relační databází a objektově orientovaným programovacím jazykem. Umožňuje konverzi SQL tabulek do tříd a usnadňuje tak práci s psaním SQL dotazů. Pro tuto konverzi se často používají externí programy, které umožňují tyto konverze mezi řadou databázových systémů. Jedním z nich je například SQLAlchemy, které umožňuje tuto konverzi pro programovací jazyk Python a relační databáze SQLite, Postresql, MySQL a další. Některé aplikace včetně Django si ovšem tuto konverzi zprostředkovávají sami za pomoci vlastního ORM. \cite{orm} \cite{sqlalchemy}
+Objektově relační mapování (ORM) zajišťuje konverzi dat mezi relační
+databází a objektově orientovaným programovacím jazykem. Umožňuje
+konverzi SQL tabulek do tříd a usnadňuje tak práci s psaním SQL
+dotazů. Pro tuto konverzi se často používají externí programy, které
+umožňují tyto konverze mezi řadou databázových systémů. Jedním z nich
+je například SQLAlchemy, které umožňuje tuto konverzi pro programovací
+jazyk Python a relační databáze SQLite, Postresql, MySQL a
+další. Některé aplikace včetně Django si ovšem tuto konverzi
+zprostředkovávají sami za pomoci vlastního ORM. \cite{orm}
+\cite{sqlalchemy}
 
 \textbf{}
 \textit{}
