@@ -3,7 +3,7 @@
 
 \section{Vytvoření základní aplikace}
 
-Aplikace, která byla vytvořena v projektu FGIS nebyla vytvořena
+Aplikace, která byla vytvořena v projektu \zk{FGIS} nebyla vytvořena
 správně, obsahovala zbytečně složitý a chybný kód. Začalo se tedy
 od začátku. Nejprve byl vytvořen projekt příkazem \emph{django-admin
   startproject mysite}. V projektu následně byla vytvořena aplikace
@@ -32,12 +32,12 @@ data a po přihlášení je bude moci uživatel také přidávat, mazat a
 editovat. Nejprve se tedy do adresáře aplikace přidal soubor \emph{urls.py},
 který se následně připojil k \emph{urls.py} v projektovém adresáři. Tento
 způsob je výhodný při použití více aplikací, kdy si každá aplikace
-uchovává své URL adresy a projekt je tak přehlednější. Pokračovalo se
+uchovává své \zk{URL} adresy a projekt je tak přehlednější. Pokračovalo se
 vytvořením pohledů založených na třídách, které se v Pythonu používají
 pro nahrazení pohledů jako funkcí. Použity jsou základní pohledy jako
 ListView pro zobrazení obsahu tabulky nebo CreateView pro uložení dat
 do databáze. V aplikaci v soubory \emph{views.py} jsou tedy vytvořeny
-třídy pohledů pro každou URL adresu. Definice těchto tříd vypadá
+třídy pohledů pro každou \zk{URL} adresu. Definice těchto tříd vypadá
 následovně \emph{class “název třídy“(Listview):} dále se u třídy
 definuje model, který se má zobrazit a template\_name neboli název
 šablony, která se použije při zobrazení.
@@ -49,7 +49,7 @@ definuje model, který se má zobrazit a template\_name neboli název
 \end{figure}
 
 
-V souboru \emph{urls.py} jsou propojeny URL adresy, pohledy a HTML
+V souboru \emph{urls.py} jsou propojeny \zk{URL} adresy, pohledy a \zk{HTML}
 šablony, na které se odkazují. Do \emph{urls.py} musí být zároveň importovány
 všechny použité pohledy. Dále je potřeba vložit cestu příkazem \emph{import path}. 
 Poté se sestaví urlpatterns, což je seznam, který obsahuje jednotlivé
@@ -58,7 +58,7 @@ argumenty, route a view a dva nepovinné, name a kwargs. Route uvádí
 adresu, pod jakou se bude stránka načítat a view odkazuje na
 importovaný pohled. Zde byla použita funkce \emph{as\_view()}, která
 se používá, pokud je pohled typu třída. Jméno je uvedeno jako název
-HTML šablony.
+\zk{HTML} šablony.
 
 \begin{figure}[H] \centering
     \includegraphics[width=450pt]{./pictures/7-urls-aplikace.PNG}
@@ -66,8 +66,8 @@ HTML šablony.
 	\label{fig:Náhled urls.py v adresáři aplikaci}              
 \end{figure}
 
-Pro vytvoření HTML šablon se vytvořila složka \emph{templates}, kde
-jsou uloženy jednotlivé HTML soubory. Tato složka se v settings.py
+Pro vytvoření \zk{HTML} šablon se vytvořila složka \emph{templates}, kde
+jsou uloženy jednotlivé \zk{HTML} soubory. Tato složka se v settings.py
 nastaví jako výchozí pro jejich zobrazení. Poté se už mohou vytvářet
 jednotlivé šablony. Šablony jsou vždy vytvořeny s podmínkou \emph{if
   user.is\_authenticated}, tedy pokud je uživatel přihlášen, zobrazí
@@ -76,9 +76,9 @@ spojena ještě další změna v \emph{settings.py}, kde je přidáno
 LOGIN\_REDIRECT\_URL = 'home' a LOGOUT\_REDIRECT\_URL
   = 'home' které uživatele po přihlášení a odhlášení přesměruje na
 domovskou stránku. Ve složce \emph{templates} je ještě složka
-\emph{registration}, kde je umístěn \emph{login.html}. HTML soubory
+\emph{registration}, kde je umístěn \emph{login.html}. \zk{HTML} soubory
 zobrazují data v základní formě tabulek a nejsou graficky upravována
-pomocí CSS (Cascading Style Sheets).
+pomocí \zk{CSS} (Cascading Style Sheets).
 
 \begin{figure}[H] \centering
     \includegraphics[width=350pt]{./pictures/8-edit-detail-html.PNG}
@@ -97,7 +97,7 @@ záznamům. Obrázky se neměly ukládat do databáze, ale do adresáře v
 aplikaci. Databáze poté měla obsahovat cestu k těmto souborům. K tomu
 byla vytvořena nová tabulka, který byla přes cizí klíč spojena s
 tabulkou se záznamy. Tabulka byla vytvořena v modelu, a poté pomocí
-migrací byla přenesena do databáze. Obsahuje tedy pole ID, což je
+migrací byla přenesena do databáze. Obsahuje tedy pole \zk{ID}, což je
 primární klíč tabulky, Post, který je cizím klíčem k tabulce Cvut a
 sloupec Image, do kterého se zaznamenává cesta k danému souboru viz \ref{fig:Struktura výběrové databáze}.
 Pro zobrazení obrázků ještě musel být doinstalován přídavný modul Pillow.
@@ -127,13 +127,13 @@ připojí funkce static.
 
 \section{Statické soubory}
 
-Pro řešení vizuální stránky webu jsou používány CSS soubory. Ve složce
+Pro řešení vizuální stránky webu jsou používány \zk{CSS} soubory. Ve složce
 aplikace se tedy vytvoří adresář \emph{static} a tomu se v \emph{settings.py} 
 určí jeho nastavení pro statické soubory příkazy STATIC\_URL =
   '/static/' a STATICFILES\_DIRS = [os.path.join( BASE\_DIR,
     'static')]. Ve složce static je vytvořen adresář \emph{css}, kde se
-nachází základní CSS soubor \emph{base.css}. Ten je ovšem prázdný a není
-připojen k žádnému HTML souboru.
+nachází základní \zk{CSS} soubor \emph{base.css}. Ten je ovšem prázdný a není
+připojen k žádnému \zk{HTML} souboru.
 
 \begin{figure}[H] \centering
     \includegraphics[width=110pt]{./pictures/7-nahled-adresare.PNG}
@@ -145,7 +145,7 @@ připojen k žádnému HTML souboru.
 
 Dalším nastavením bylo použití našeho středoevropského času a českého
 jazyka. Velice jednoduché nastavení, kdy v \emph{settings.py} je po
-vytvoření aplikace nastaven jazyk na angličtinu a čas na UTC. Pro
+vytvoření aplikace nastaven jazyk na angličtinu a čas na \zk{UTC}. Pro
 změnu se tedy přepíše LANGUAGE\_CODE = 'en-us' na
 LANGUAGE\_CODE = 'cs' a TIME\_ZONE = 'UTC' na
 TIME\_ZONE = 'CET'.
@@ -167,7 +167,7 @@ Při jeho tvorbě a modifikaci byla jako podklad použita oficiální dokumentac
 
 \section{Oprávnění k objektům}
 \label{pop}
-Dalším úkolem bylo zajištění oprávnění k objektům (per object permissions), tedy že uživatel nebude moci editovat celou tabulku, ale jen objekty, ke kterým bude mít udělená práva. Tuto možnost zajišťuje přídavný balíček django-guardian, který ovšem po jeho instalaci a implementaci nefungoval správně a i po nastavení práv uživatel nemohl daný objekt editovat. Vymyslel se tedy systém za použití autentifikačního systému, kdy se do tabulky Cvut přidá nová proměnná Managers, ve které se budou moci vybírat registrovaní uživatelé. Tato proměnná vytváří v databázi novou tabulku, která obsahuje ID, ID uživatele a ID objektu v tabulce. Ve vytvořených třídách v \emph{admin.py} je poté možnost pomocí funkcí has\_view\_permission(), has\_add\_permission(), has\_change\_permission() a has\_delete\_permission() modifikovat práva k tabulkám. Zde se tedy změnilo nastavení funkcí tak, aby tabulky mohl editovat superuživatel, uživatel, který má udělená práva editovat celou tabulku nebo uživatel, který je přidaný v tabulce Managers. 
+Dalším úkolem bylo zajištění oprávnění k objektům (per object permissions), tedy že uživatel nebude moci editovat celou tabulku, ale jen objekty, ke kterým bude mít udělená práva. Tuto možnost zajišťuje přídavný balíček django-guardian, který ovšem po jeho instalaci a implementaci nefungoval správně a i po nastavení práv uživatel nemohl daný objekt editovat. Vymyslel se tedy systém za použití autentifikačního systému, kdy se do tabulky Cvut přidá nová proměnná Managers, ve které se budou moci vybírat registrovaní uživatelé. Tato proměnná vytváří v databázi novou tabulku, která obsahuje \zk{ID}, \zk{ID} uživatele a \zk{ID} objektu v tabulce. Ve vytvořených třídách v \emph{admin.py} je poté možnost pomocí funkcí has\_view\_permission(), has\_add\_permission(), has\_change\_permission() a has\_delete\_permission() modifikovat práva k tabulkám. Zde se tedy změnilo nastavení funkcí tak, aby tabulky mohl editovat superuživatel, uživatel, který má udělená práva editovat celou tabulku nebo uživatel, který je přidaný v tabulce Managers. 
 
 \begin{figure}[H] \centering
     \includegraphics[width=330pt]{./pictures/11-managers-model.PNG}
@@ -184,7 +184,7 @@ Dalším úkolem bylo zajištění oprávnění k objektům (per object permissi
 
 \section{Nastavení zobrazení dat a jejich vyhledávání}
 
-Django disponuje řadou funkcí pro nastavení zobrazení dat v administrátorském prostředí. Nejprve se nastavovalo zobrazení dat na stránce tabulky. Zde se měly zobrazovat pouze základní informace o objektu jako je ID, fond, okres, obec. To se nastavuje pomocí proměnné \emph{list\_display} a \emph{list\_display\_links} slouží pro určení položek, díky kterým se po kliknutí dostanete na stránku obsahující informace o daném objektu. Na této stránce se zobrazují všechny určené položky definované v listu \emph{fields}. Dále byly nastaveny filtry pomocí \emph{list\_filer} a vyhledávání \emph{search\_fields}. 
+Django disponuje řadou funkcí pro nastavení zobrazení dat v administrátorském prostředí. Nejprve se nastavovalo zobrazení dat na stránce tabulky. Zde se měly zobrazovat pouze základní informace o objektu jako je \zk{ID}, fond, okres, obec. To se nastavuje pomocí proměnné \emph{list\_display} a \emph{list\_display\_links} slouží pro určení položek, díky kterým se po kliknutí dostanete na stránku obsahující informace o daném objektu. Na této stránce se zobrazují všechny určené položky definované v listu \emph{fields}. Dále byly nastaveny filtry pomocí \emph{list\_filer} a vyhledávání \emph{search\_fields}. 
 
 \begin{figure}[H] \centering
     \includegraphics[width=400pt]{./pictures/21-zobrazeni-dat.PNG}
@@ -242,7 +242,7 @@ sloupec Managers viz kapitola [\ref{pop}].
 Úkolem projekčního týmu bylo vytvořit prostředí pro jednotný vývoj
 aplikace. Do tohoto prostředí bylo ovšem potřeba zahrnout jak aplikaci,
 tak databázi, ke které se aplikace připojuje. Základním souborem pro
-tvorbu obrazů je \emph{docker-compose.yaml}. Ten definuje základní
+tvorbu obrazů je \emph{docker-compose.yml}. Ten definuje základní
 nastavení pro vytváření tří obrazů, ze kterých se budou spouštět
 jednotlivé kontejnery. Prvním obrazem je db, ze kterého vzniká
 kontejner, ve kterém běží vytvořená databáze MariaDB. Druhým obrazem
@@ -278,7 +278,7 @@ které jsou v modelu zapsány v tabulce Cvut vytváří v databázi vlastní
 tabulku. Pokud by se vytvořila tabulka Managers v databázi a pomocí
 inspectdb by se převedla do modelu, vytvořila by se tam jako
 samostatná tabulka a nesplňovala by požadovanou
-funkcionalitu. Vytvořené tabulky Cvut a Base\_Images se pomocí SQL
+funkcionalitu. Vytvořené tabulky Cvut a Base\_Images se pomocí \zk{SQL}
 příkazů v \emph{cvut.sql} doplní o data z tabulky Base\_Data. Obrázky
 na které se odkazují jsou momentálně předpřipravené a uložené na
 serveru geo102.fsv.cvut.cz, odkud se stáhnou a uloží do složky

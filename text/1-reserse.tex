@@ -5,7 +5,7 @@
 
 Při volbě, jakou metodu pro tvorbu aplikace použít, se nabízelo několik
 možností jak ji vytvořit. Aplikace by mohla být vytvořena například za použití
-skriptovací jazyka PHP, Javascriptu nebo Python frameworku 
+skriptovací jazyka \zk{PHP}, Javascriptu nebo Python frameworku 
 pro tvorbu webových aplikací. 
 
 Ze zadání projektového týmu ovšem vyplynulo, že by aplikace měla být
@@ -33,7 +33,7 @@ jiných nástrojů. Do Flasku lze ovšem doinstalovat různá rozšíření,
 která v základní verzi chybí jako například Flask-Admin, což je
 administrátorské rozhraní pro správu uživatelů a objektů v
 databázi. Výhodou je jeho velká obliba v komunitě, kdy v roce 2020 měl
-druhé místo na GitHubu z webových frameworků, a díky tomu disponuje
+druhé místo na github.com z webových frameworků, a díky tomu disponuje
 spoustou materiálů a tutoriálů. Avšak velká nevýhoda Flasku pro vývoj
 naší aplikace je, že nedisponuje datovými modely. Pokud bychom v průběhu
 vývoje chtěli přidat sloupec do naší databáze, musíme to udělat ručně
@@ -61,16 +61,16 @@ ostatní frameworky.
 \section{Volba databáze}
 
 Jedním z hlavních úkolů bylo vytvoření databáze, ze které se budou
-zobrazovat poskytnutá data z projektu Viskalia, rozšířená o další
-položky. Textová data zpro\-středkovaná Národním muzem byla uložena v
+zobrazovat poskytnutá data z projektu \zk{VISKALIA}, rozšířená o další
+položky. Textová data zprostředkovaná fondem Národního muzea byla uložena v
 MariaDB databázi a obrazová data byla v souborovém systému. Příslušná
 databáze ovšem postrádá jakoukoli normalizaci a data obsahují spoustu
 duplicit. Nabízí se proto otázka, zda provést normalizaci dat a opět
 použít relační databázi, nebo nějakou z nerelačních
-databází. Asi zásadní problém s NoSQL databází, který by mohl nastat
+databází. Asi zásadní problém s \zk{NoSQL} databází, který by mohl nastat
 je v komunikaci s frameworkem pro vývoj webových aplikací. Ty
 v zásadě nemají problém komunikovat s jakýmkoliv typem relační
-databáze, ovšem často nemají engine pro databáze typu NoSQL. Byla 
+databáze, ovšem často nemají engine pro databáze typu \zk{NoSQL}. Byla 
 tedy zvolena relační databáze a to MariaDB, z důvodu poskytnutí dat právě
 z tohoto databázového systému. \cite{django} \cite{mariadb}
 
@@ -90,14 +90,14 @@ použití je, že obsahují kompletní prostředí pro vývoj a chod aplikace
 jako jsou knihovny nebo konfigurační soubory. Aplikace a všechny její
 komponenty většinou běží v několika kontejnerech, které spolu dokáží
 komunikovat. Jejich chod je od zbytku systému oddělen. Zde se nabízejí
-dvě varianty, a to jsou LXC (LinuX Containers) anebo Docker, což jsou
+dvě varianty, a to jsou \zk{LXC} (LinuX Containers) anebo Docker, což jsou
 jedny z nejpoužívanějších aplikací. Hlavní rozdíl mezi těmito
-aplikacemi je, že kontejnery LXC obsahují svůj vlastní operační systém
+aplikacemi je, že kontejnery \zk{LXC} obsahují svůj vlastní operační systém
 a působí tedy spíše jako virtuální počítač. Docker oproti tomu žádné
 takové prostředí nemá a běží pouze separovaně na operačním systému
 uživatele. Dalším hlavním rozdílem je větší propracovanost Dockeru,
 které umožňuje více nastavení kontejnerů a rozdělení aplikace do více
-kontejnerů. Oproti LXC může být Docker použit i na
+kontejnerů. Oproti \zk{LXC} může být Docker použit i na
 jiném operačním systému než je Linux. Z těchto důvodů byl pro
 kontejnerizaci zvolen Docker. \cite{deployment}
 
@@ -130,15 +130,15 @@ rozdělení by došlo ke ztrátě vztahů, které mezi daty platí. \cite{normal
 
 \section{Objektově relační mapování}
 
-Objektově relační mapování (ORM) zajišťuje konverzi dat mezi relační
+Objektově relační mapování (\zk{ORM}) zajišťuje konverzi dat mezi relační
 databází a objektově orientovaným programovacím jazykem. Umožňuje
-konverzi SQL tabulek do tříd a usnadňuje tak práci s psaním SQL
+konverzi \zk{SQL} tabulek do tříd a usnadňuje tak práci s psaním \zk{SQL}
 dotazů. Pro tuto konverzi se často používají externí programy, které
 umožňují tyto konverze mezi řadou databázových systémů. Jedním z nich
 je například SQLAlchemy, které umožňuje tuto konverzi pro programovací
 jazyk Python a relační databáze SQLite, Postresql, MySQL a
 další. Některé aplikace včetně Django si ovšem tuto konverzi
-zprostředkovávají sami za pomoci vlastního ORM. \cite{orm}
+zprostředkovávají sami za pomoci vlastního \zk{ORM}. \cite{orm}
 \cite{sqlalchemy}
 
 

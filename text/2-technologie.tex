@@ -13,7 +13,7 @@ Django je open source prostředí, pro tvorbu webových aplikací. Django
 je napsané v programovacím jazyku Python a pracuje na bázi
 model-template-view. Model v tomto případě reprezentuje část, která je
 schopna komunikovat a pracovat s databází. Templates určují obsah
-zobrazení a jsou realizovány pomocí HTML. View zobrazuje daný obsah
+zobrazení a jsou realizovány pomocí \zk{HTML}. View zobrazuje daný obsah
 koncovým uživatelům.
 
 Django bylo vytvořeno v roce 2005 americkou společností The World
@@ -67,7 +67,7 @@ vypadá následovně:
 \textbf{setting.py} zde se definují všechna nastavení Django projektu. 
 \vspace{6px}
 
-\textbf{urls.py} v projektovém adresáři definuje seznam URL adres na
+\textbf{urls.py} v projektovém adresáři definuje seznam \zk{URL} adres na
 úrovní projektu. Při založení je zde obsažena administrátorská
 stránka.  \vspace{6px}
 
@@ -76,9 +76,9 @@ webového serveru s frameworkem Django, popřípadě jinými webovými
 aplikacemi.  \vspace{6px}
 
 \textbf{asgi.py} (Asynchronous Server Gateway Interface) byl do Djanga
-přidán ve verzi 3.0 a je nástupce staršího WSGI. Výhodou WSGI oproti
-ASGI je, že dokáže pracovat se složitějšími protokoly jako jsou
-WsbSocket, IoT protokoly, HTTP2 a další. Umožňuje komunikovat přes
+přidán ve verzi 3.0 a je nástupce staršího \zk{WSGI}. Výhodou \zk{WSGI} oproti
+\zk{ASGI} je, že dokáže pracovat se složitějšími protokoly jako jsou
+WsbSocket, \zk{IoT} protokoly, \zk{HTTP2} a další. Umožňuje komunikovat přes
 více linek a tedy posílat a přijímat více dat najednou.  \vspace{6px}
 
 \textbf{manage.py} je automaticky vygenerován v novém adresáři a je
@@ -103,7 +103,7 @@ příkazů. Zde je výčet těch nejdůležitějších a jejich popis. \cite{dja
 \item {\tt python manage.py makemigrations [název aplikace]} -
   tento příkaz provede porovnání modelu s databází. Pokud jsou
   nalezeny změny, vytvoří se nový soubor se stávajícími migracemi. Ten
-  obsahuje SQL příkazy, jak by se měla vytvořit databáze podle modelu
+  obsahuje \zk{SQL} příkazy, jak by se měla vytvořit databáze podle modelu
   definovaném v aplikaci. Příkaz se definuje zadáním jména aplikace,
   potažmo aplikací. Lze tedy vytvořit migrace pro jednu nebo
   více aplikací zadáním jejich názvů.
@@ -185,7 +185,7 @@ takovou tedy vůbec nemusí pracovat. Při připojování k již
 existující databázi lze příkazem inspectdb vygenerovat model stávající
 databáze. Django oficiálně podporuje databáze PostgreSQL, MariaDB,
 MySQL, Oracle a SQLite. Jsou zde ovšem i komunitně vytvořené balíčky
-pro podporu NoSQL databáze MongoDB. \cite{django}
+pro podporu \zk{NoSQL} databáze MongoDB. \cite{django}
 
 Model obsahuje všechny informace o tabulkách a jejich
 sloupcích. Jednotlivé tabulky jsou v modelu vytvořeny jako třídy class
@@ -250,7 +250,7 @@ dat. \cite{django-admin}
 Docker je open source software používaný pro jednotný vývoj aplikací,
 které běží v izolovaných kontejnerech. Je primárně využíván na
 operačním systému Linux, ale je možné ho zprovoznit také na Windows
-nebo Mac OS X. Výhodou je také, že může běžet jak lokálně, tak na
+nebo Mac \zk{OS} X. Výhodou je také, že může běžet jak lokálně, tak na
 cloudovém uložišti. Jeho užití spočívá ve vytvoření obrazů (image), ze 
 kterých se následně v kontejnerech spustí aplikace ve stejné formě, 
 v jaké byl vytvořen její obraz. Díky tomu je poté zajištěn bezproblémový 
@@ -272,7 +272,7 @@ vlastní vrstvu, kde jsou uloženy všechny změny, které uživatel provedl.
 
 Git je open source verzovací systém, který se hojně používá při vývoji
 aplikací. Jeho použití je možné na řadě platforem a ovládání
-se provádí přes příkazový řádek nebo GUI. Git funguje na principu
+se provádí přes příkazový řádek nebo \zk{GUI}. Git funguje na principu
 repozitářů, ve kterých jsou uloženy projekty. Repozitář obsahuje celý
 projekt a jeho kompletní historii provedených změn. Každý člen týmu je
 tedy rovněž i zálohou. Při použití Gitu se využívají webové služby
@@ -288,7 +288,7 @@ MariaDB je komunitně vyvíjeným databázovým systémem odvozeným od MySQL
 licencovaný jako svobodný software GNU. První verze MariaDB vyšla v
 roce 2009 a měla číslo 5.1, to odpovídalo aktuální verzi MySQL,
 poslední verze této řady byla verze 5.5. Další řada nesla označení 10
-a lišila se tím, že už nebyla 100\% kompatibilní s MySQL. Aktuálně
+a lišila se tím, že už nebyla 100\% kompatibilní s MySQL. Aktuálně 
 nejnovější verze je 10.5, která vyšla na konci roku 2019. MariaDB
 podporuje řadu operačních systémů včetně těch nejrozšířenějších jako
 Windows, Linux a MacOS. Vzhledem k tomu, že se vycházelo z MySQL, má
@@ -299,10 +299,10 @@ source. \cite{mariadb}
 \section{phpMyAdmin}
 
 Je to open source nástroj pro správu MySQL a MariaDB databáze pomocí
-webového rozhraní. Je napsaný v jazyce PHP a je k dispozici ve více jak 70
-jazycích včetně češtiny. Toto rozhraní umožňuje provádět SQL příkazy
+webového rozhraní. Je napsaný v jazyce \zk{PHP} a je k dispozici ve více jak 70
+jazycích včetně češtiny. Toto rozhraní umožňuje provádět \zk{SQL} příkazy
 jako jsou CREATE, DROP, ALTER table a spravovat obsah tabulek. Dále je
-zde možný například import dat z CSV souborů, export dat do
+zde možný například import dat z \zk{CSV} souborů, export dat do
 nejrůznějších formátů nebo správa uživatelů. K přístupu do rozhraní
 phpMyAdmin je zapotřebí webový prohlížeč s podporou cookies a
 JavaScriptu. \cite{phpmyadmin} \cite{phpmyadmin-2}
