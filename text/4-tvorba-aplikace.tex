@@ -5,20 +5,20 @@
 
 Aplikace, která byla vytvořena v projektu \zk{FGIS} nebyla vytvořena
 správně, obsahovala zbytečně složitý a chybný kód. Začalo se tedy
-od začátku. Nejprve byl vytvořen projekt příkazem \emph{django-admin
-  startproject mysite}. V projektu následně byla vytvořena aplikace
-pomocí \emph{python manage.py startapp}. Aplikace byla v
+od začátku. Nejprve byl vytvořen projekt příkazem {\tt django-admin 
+startproject mysite}. V projektu následně byla vytvořena aplikace
+pomocí {\tt python manage.py startapp}. Aplikace byla v
 \emph{settings.py} přidána do INSTALLED\_APPS. Dále se
 nastavilo připojení k databázi. V \emph{settings.py} se tedy v
 DATABASES se změnil engine na MySQL, protože Django v základu
 používá SQLite. Změnilo se ještě NAME, USER, PASSWORD, HOST A PORT,
 protože databáze byla provozována na školním serveru
-geo102.fsv.cvut.cz. Po připojení se musel vygenerovat model databáze
+\emph{geo102.fsv.cvut.cz}. Po připojení se musel vygenerovat model databáze
 příkazem inspectdb. Dále byla
 provedena migrace, aby se v databázi vytvořily Django
 tabulky. Posledním krokem bylo vytvoření superuživatele, který se bude
 moci přihlásit do uživatelské i administrátorské aplikace. To bylo
-realizováno příkazem \emph{python manage.py createsuperuser}.
+realizováno příkazem {\tt python manage.py createsuperuser}.
 
 Na stránce GitLab.com byl vytvořen nový repozitář, do kterého se celý
 projekt přesunul a nadále v něm byl průběžně zálohován. Dále se tam
@@ -67,7 +67,7 @@ se používá, pokud je pohled typu třída. Jméno je uvedeno jako název
 \end{figure}
 
 Pro vytvoření \zk{HTML} šablon se vytvořila složka \emph{templates}, kde
-jsou uloženy jednotlivé \zk{HTML} soubory. Tato složka se v settings.py
+jsou uloženy jednotlivé \zk{HTML} soubory. Tato složka se v \emph{settings.py}
 nastaví jako výchozí pro jejich zobrazení. Poté se už mohou vytvářet
 jednotlivé šablony. Šablony jsou vždy vytvořeny s podmínkou \emph{if
   user.is\_authenticated}, tedy pokud je uživatel přihlášen, zobrazí
@@ -113,7 +113,7 @@ Pro zobrazení obrázků ještě musel být doinstalován přídavný modul Pill
 V nastavení se dále určí kořenový adresář pro nahrávané soubory
 MEDIA\_ROOT = os.path.join(BASE\_DIR, 'media') a
 MEDIA\_URL = '/media/'.  A v poslední řadě se musí nastavit v
-projektovém urls.py media soubory, které Django samo neumí
+projektovém \emph{urls.py} media soubory, které Django samo neumí
 zobrazovat. Zde se provede import settings a static a k urlpatterns se
 připojí funkce static.
 
@@ -132,7 +132,7 @@ aplikace se tedy vytvoří adresář \emph{static} a tomu se v \emph{settings.py
 určí jeho nastavení pro statické soubory příkazy STATIC\_URL =
   '/static/' a STATICFILES\_DIRS = [os.path.join( BASE\_DIR,
     'static')]. Ve složce static je vytvořen adresář \emph{css}, kde se
-nachází základní \zk{CSS} soubor \emph{base.css}. Ten je ovšem prázdný a není
+nachází zá\-kladní \zk{CSS} soubor \emph{base.css}. Ten je ovšem prázdný a není
 připojen k žádnému \zk{HTML} souboru.
 
 \begin{figure}[H] \centering
@@ -155,7 +155,7 @@ TIME\_ZONE = 'CET'.
 \section{Administrátorské prostředí}
 
 Po vytvoření základní uživatelské aplikace a úvahách o její funkci jsme dospěli k rozhodnutí, že nám bude stačit administrátorské rozhraní, ve kterém se budou provádět modifikace podle daných požadavků.
-Při jeho tvorbě a modifikaci byla jako podklad použita oficiální dokumentace Django (docs.djangoproject.com) a \cite{django-admin-book} Administrátorské prostředí se upravuje v adresáři aplikace v souboru \emph{admin.py} a lze se do něj dostat zadáním /admin za url adresu webové stránky. Začalo se tedy importem a zaregistrováním modelů do rozhraní a vytvořením jejich tříd. Pro model CvutImages se nejprve vytvořila třída PostImageAdmin, ve které je použit StackedInline model. Ten se používá pro vnořené třídy, tedy pokud je chceme zobrazit na jedné stránce společně s jinou třídou. V tomto případě tedy chceme zobrazit obrázky, které přísluší jednotlivým záznamům v třídě Cvut. @admin.register slouží k zobrazení třídy v administrátorském rozhraní, podmíněno vytvořením třídy tohoto modelu, ve které se poté provádí modifikace zobrazení. Ta je zde rozšířena o třídu PostImageAdmin. Dále je zaregistrován model CvutImages a vytvořena jeho třída pro jeho zobrazení.
+Při jeho tvorbě a modifikaci byla jako podklad použita oficiální dokumentace Django (\emph{docs.djangoproject.com}) a \cite{django-admin-book} Administrátorské prostředí se upravuje v adresáři aplikace v souboru \emph{admin.py} a lze se do něj dostat zadáním \emph{/admin} za \zk{URL} adresu webové stránky. Začalo se tedy importem a zaregistrováním modelů do rozhraní a vytvořením jejich tříd. Pro model CvutImages se nejprve vytvořila třída PostImageAdmin, ve které je použit StackedInline model. Ten se používá pro vnořené třídy, tedy pokud je chceme zobrazit na jedné stránce společně s jinou třídou. V tomto případě tedy chceme zobrazit obrázky, které přísluší jednotlivým záznamům v třídě Cvut. @admin.register slouží k zobrazení třídy v administrátorském rozhraní, podmíněno vytvořením třídy tohoto modelu, ve které se poté provádí modifikace zobrazení. Ta je zde rozšířena o třídu PostImageAdmin. Dále je zaregistrován model CvutImages a vytvořena jeho třída pro jeho zobrazení.
 
 \begin{figure}[H] \centering
     \includegraphics[width=230pt]{./pictures/12-admin-reg.PNG}
@@ -167,7 +167,7 @@ Při jeho tvorbě a modifikaci byla jako podklad použita oficiální dokumentac
 
 \section{Oprávnění k objektům}
 \label{pop}
-Dalším úkolem bylo zajištění oprávnění k objektům (per object permissions), tedy že uživatel nebude moci editovat celou tabulku, ale jen objekty, ke kterým bude mít udělená práva. Tuto možnost zajišťuje přídavný balíček django-guardian, který ovšem po jeho instalaci a implementaci nefungoval správně a i po nastavení práv uživatel nemohl daný objekt editovat. Vymyslel se tedy systém za použití autentifikačního systému, kdy se do tabulky Cvut přidá nová proměnná Managers, ve které se budou moci vybírat registrovaní uživatelé. Tato proměnná vytváří v databázi novou tabulku, která obsahuje \zk{ID}, \zk{ID} uživatele a \zk{ID} objektu v tabulce. Ve vytvořených třídách v \emph{admin.py} je poté možnost pomocí funkcí has\_view\_permission(), has\_add\_permission(), has\_change\_permission() a has\_delete\_permission() modifikovat práva k tabulkám. Zde se tedy změnilo nastavení funkcí tak, aby tabulky mohl editovat superuživatel, uživatel, který má udělená práva editovat celou tabulku nebo uživatel, který je přidaný v tabulce Managers. 
+Dalším úkolem bylo zajištění oprávnění k objektům (per object permissions), tedy že uživatel nebude moci editovat celou tabulku, ale jen objekty, ke kterým bude mít udělená práva. Tuto možnost zajišťuje přídavný balíček \emph{django-guardian}, který ovšem po jeho instalaci a implementaci nefungoval správně a i po nastavení práv uživatel nemohl daný objekt editovat. Vymyslel se tedy systém za použití autentifikačního systému, kdy se do tabulky Cvut přidá nová proměnná Managers, ve které se budou moci vybírat registrovaní uživatelé. Tato proměnná vytváří v databázi novou tabulku, která obsahuje \zk{ID}, \zk{ID} uživatele a \zk{ID} objektu v tabulce. Ve vytvořených třídách v \emph{admin.py} je poté možnost pomocí funkcí has\_view\_permission(), has\_add\_permission(), has\_change\_permission() a has\_delete\_permission() mo\-difikovat práva k tabulkám. Zde se tedy změnilo nastavení funkcí tak, aby tabulky mohl editovat superuživatel, uživatel, který má udělená práva editovat celou tabulku nebo uživatel, který je přidaný v tabulce Managers. 
 
 \begin{figure}[H] \centering
     \includegraphics[width=330pt]{./pictures/11-managers-model.PNG}
@@ -219,7 +219,7 @@ Po vytvoření základních funkcionalit aplikace byla projektovému týmu zpros
 \section{Doplnění výběrové databáze}
 
 Tato databáze už obsahuje data z centrální databáze, které se pomocí
-skriptu upravily dle kapitoly [\ref{tvorba-database}]. Po konzultaci
+skriptu upra\-vily dle kapitoly [\ref{tvorba-database}]. Po konzultaci
 projektového týmu se dospělo k závěru, že se k jednotlivým objektům
 budou přidávat nejen obrázkové soubory, ale také modely a jiné
 dokumenty. Vytvořila se tedy tabulka CvutFiles, která odpovídala
@@ -247,7 +247,7 @@ nastavení pro vytváření tří obrazů, ze kterých se budou spouštět
 jednotlivé kontejnery. Prvním obrazem je db, ze kterého vzniká
 kontejner, ve kterém běží vytvořená databáze MariaDB. Druhým obrazem
 je phpmyadmin, který se nesestavuje lokálně, ale je stažen z
-hub.docker.com. Třetí obraz je nazván editapp a vytváří kontejner, ve
+\emph{hub.docker.com}. Třetí obraz je nazván editapp a vytváří kontejner, ve
 kterém běží vyvíjená webová aplikace. U každého obrazu je zde potom
 definováno, z jakých souborů se obraz vytvoří, název kontejneru, port,
 na kterém daný kontejner poběží a další nastavení, potřebná pro
@@ -270,19 +270,19 @@ image je nastavena na Python 3.9, ve kterém také běží Django. Dále se
 opět musí doinstalovat potřebná rozšíření, zapsaná v
 \emph{requirements.txt} a spustí se skript \emph{startup.sh}. Tímto
 skriptem se databáze doplňuje o další tabulky a jejich
-objekty. Nejprve se zde provede inspectdb, kterým se vytvoří
+objekty. Nejprve se zde provede {\tt python manage.py inspectdb}, kterým se vytvoří
 \emph{models.py} s tabulkou Base\_Data. Vytvořený model je rozšířen o
 tabulky Cvut, CvutFiles a Base\_Images a migrací je převeden do
 databáze. Toto je z důvodů autentifikačního systému, kdy Managers,
 které jsou v modelu zapsány v tabulce Cvut vytváří v databázi vlastní
 tabulku. Pokud by se vytvořila tabulka Managers v databázi a pomocí
-inspectdb by se převedla do modelu, vytvořila by se tam jako
+ {\tt python manage.py inspectdb} by se převedla do modelu, vytvořila by se tam jako
 samostatná tabulka a nesplňovala by požadovanou
 funkcionalitu. Vytvořené tabulky Cvut a Base\_Images se pomocí \zk{SQL}
 příkazů v \emph{cvut.sql} doplní o data z tabulky Base\_Data. Obrázky
 na které se odkazují jsou momentálně předpřipravené a uložené na
-serveru geo102.fsv.cvut.cz, odkud se stáhnou a uloží do složky
-\emph{media}. Nakonec se aplikace spustí příkazem runserver.
+serveru \emph{geo102.fsv.cvut.cz}, odkud se stáhnou a uloží do složky
+\emph{media}. Nakonec se aplikace spustí příkazem  {\tt python manage.py runserver}.
 
 \begin{figure}[H] \centering
     \includegraphics[width=400pt]{./pictures/diagram-docker.PNG}
